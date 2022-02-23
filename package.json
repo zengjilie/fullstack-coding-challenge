@@ -1,0 +1,23 @@
+{
+  "name": "supplyframe-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zengjilie/fullstack-coding-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zengjilie/fullstack-coding-challenge/issues"
+  },
+  "homepage": "https://github.com/zengjilie/fullstack-coding-challenge#readme",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "express": "^4.17.3"
+  }
+}
