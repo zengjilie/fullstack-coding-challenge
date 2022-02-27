@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   "homepage": "https://github.com/zengjilie/fullstack-coding-challenge#readme",
   "dependencies": {
     "axios": "^0.26.0",
+    "ejs": "^3.1.6",
     "express": "^4.17.3"
   },
   "description": ""
