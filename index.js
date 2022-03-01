@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();
+const https = require('https');
 
 app.set('view engine','ejs');
 app.use(express.json());
 
 //route
-app.get('/',(req,res)=>{
+app.get('/',async (req,res)=>{
     res.render('index');
+    >>
+
 });
 
 //port
