@@ -36,8 +36,8 @@ app.get('/', async (req, res) => {
             });
 
             //Send filtered data to the frontend
-            res.json(engBible);
-            // res.render('index', { bbData: JSON.stringify(engBible)});
+            // res.json(engBible);
+            res.render('index', { bbData: JSON.stringify(engBible)});
         })
         .catch(err => console.log(err))
 });

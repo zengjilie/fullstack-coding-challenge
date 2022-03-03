@@ -11,7 +11,10 @@
 <body>
     Home page
     <div class="bible-versions">
-
+        <% const engBible = JSON.parse(bbData) %>
+        <% engBible.forEach(e => { %>
+            <p><%= e.name %> </p>
+        <%}) %> 
     </div>
 </body>
 
@@ -20,7 +23,7 @@
     const engBible = JSON.parse(data);
     console.log(engBible);
 
-    const bibleVersion = ${'.bible-version'}.
+    // const bibleVersion = ${'.bible-version'}.
 </script>
 
 </html>
