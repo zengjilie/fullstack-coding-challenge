@@ -1,5 +1,5 @@
 const express = require('express');
-const bible = require('./bible.js');
+const bible = require('./tools/bible.js');
 
 const app = express();
 
