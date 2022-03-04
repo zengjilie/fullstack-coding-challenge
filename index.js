@@ -15,7 +15,7 @@ app.use(express.static('public'));
 app.get('/', async (req, res) => {
     const response = await bible.get('')
 
-    const { data } = response.data;
+    const { data } = response?.data;
 
     //=== [Data from Bible.api is not cleaned !!!] ===
 
@@ -23,16 +23,34 @@ app.get('/', async (req, res) => {
 
     const set = new Set();
 
-    let engBible = data.filter(entry => {
+    let engBible = data?.filter(entry => {
         if (entry.language.name == 'English' && !set.has(entry.dblId)) {
             set.add(entry.dblId);
             return true;
         }
     });
+
     //=== VerseOfDay===
     const verse = await getVerse();
-    res.render('index', { bbData: JSON.stringify(engBible),verse:verse[0] });
+    res.render('index', { bbData: JSON.stringify(engBible), verse: verse[0] });
 });
+
+app.get('/:bibleId', async (req, res) => {
+    const response = await bible.get(`/${req.params.bibleId}/books?include-chapters=true`);
+    const response2 = await bible.get(`/${req.params.bibleId}`);
+
+    const books = response?.data?.data;//array
+    const version = response2?.data?.data;//string
+
+    console.log(books);
+
+    res.render('books', { books, version });
+})
+
+app.get('/:bibleId/:bookId',async(req, res)=>{
+    // const response = await bible.get(`/${}`);
+    
+})
 
 //port
 const PORT = process.env.port || 5000;

@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OH MY BIBLE</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="/styles/bibleVersionCard.css">
     <link rel="stylesheet" href="styles/home.css">
     <link rel="stylesheet" href="styles/header.css">
 
@@ -23,7 +22,7 @@
             margin: 0;
         }
 
-        a{
+        a {
             text-decoration: none;
         }
     </style>
@@ -58,25 +57,24 @@
                 <% engBible.forEach(e=> { %>
 
                     <!-- bookComponent -->
-                    <% const url='/' + e.id + '/' + 'books?' + 'include-chapters=true' %>
-                        <a class="home-bible-version" href="<%= url %>">
-                            <div class="home-bible-version-box">
-                                <p class="book-abbr">
-                                    <%= e.abbreviation%>
-                                </p>
-                                <p class="version-name">
-                                    <%= e.name%>
-                                </p>
-                            </div>
-                            <!-- <button class="book-button">
+                    <a class="home-bible-version" href="<%= e.id%>">
+                        <div class="home-bible-version-box">
+                            <p class="book-abbr">
+                                <%= e.abbreviation%>
+                            </p>
+                            <p class="version-name">
+                                <%= e.name%>
+                            </p>
+                        </div>
+                        <button class="book-button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-arrow-up-right" viewBox="0 0 16 16">
+                                class="bi bi-arrow-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
-                                    d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z" />
+                                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                             </svg>
-                        </button> -->
-                        </a>
-                        <%}) %>
+                        </button>
+                    </a>
+                    <%}) %>
         </div>
 </body>
 

@@ -22,6 +22,12 @@ $fc3:rgb(104, 99, 99);
     align-items: center;
 }
 
+@mixin flexCenterH2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 @mixin flexCenterV{
     display: flex;
     flex-direction: column;

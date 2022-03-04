@@ -1,34 +1,3 @@
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  width: 100%;
-  height: 50px;
-  padding: 10px 0;
-  border-bottom: 1px #515151 solid;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.header .header-container {
-  max-width: 900px;
-  height: 100%;
-  padding: 0 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.header .header-container .header-title {
-  font-size: 1.5rem;
-  color: white;
-}
-
 .home-image {
   width: 100%;
   height: 80vh;
@@ -51,6 +20,7 @@
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 20px;
 }
 
 .home-image .home-verse-text {
@@ -65,6 +35,7 @@
 
 .home-bible-versions {
   margin-top: 20px;
+  padding: 0 20px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[3];
@@ -76,36 +47,48 @@
 }
 
 .home-bible-versions .home-bible-version {
-  text-align: center;
   height: 200px;
-  background-color: black;
+  background-color: #2d2d2d;
   position: relative;
   padding: 10px 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   cursor: pointer;
 }
 
 .home-bible-versions .home-bible-version:hover {
-  background-color: #2d2b2b;
+  background-color: #4a4a4a;
+}
+
+.home-bible-versions .home-bible-version:hover .book-button {
+  opacity: 1;
 }
 
 .home-bible-versions .home-bible-version .home-bible-version-box .book-abbr {
   color: white;
+  font-size: 1.5rem;
+  text-align: left;
+  margin-bottom: 30px;
 }
 
 .home-bible-versions .home-bible-version .home-bible-version-box .version-name {
-  color: #aba4a4;
+  color: white;
+  text-align: left;
+}
+
+.home-bible-versions .home-bible-version .book-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border: none;
+  opacity: 0;
+  cursor: pointer;
 }
 /*# sourceMappingURL=home.css.map */
