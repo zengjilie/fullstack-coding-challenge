@@ -63,7 +63,7 @@
   text-align: right;
 }
 
-.home-bible-books {
+.home-bible-versions {
   margin-top: 20px;
   display: -ms-grid;
   display: grid;
@@ -75,10 +75,11 @@
   margin-right: auto;
 }
 
-.home-bible-books .home-bible-book {
+.home-bible-versions .home-bible-version {
   text-align: center;
   height: 200px;
   background-color: black;
+  position: relative;
   padding: 10px 20px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -96,11 +97,15 @@
   cursor: pointer;
 }
 
-.home-bible-books .home-bible-book .home-bible-book-box .book-abbr {
+.home-bible-versions .home-bible-version:hover {
+  background-color: #2d2b2b;
+}
+
+.home-bible-versions .home-bible-version .home-bible-version-box .book-abbr {
   color: white;
 }
 
-.home-bible-books .home-bible-book .home-bible-book-box .book-name {
+.home-bible-versions .home-bible-version .home-bible-version-box .version-name {
   color: #aba4a4;
 }
 /*# sourceMappingURL=home.css.map */
