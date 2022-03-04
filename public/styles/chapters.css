@@ -20,6 +20,12 @@
   color: #4a4a4a;
 }
 
+.chapters .chapter-title {
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 20px;
+}
+
 .chapters .chapters-box {
   display: -webkit-box;
   display: -ms-flexbox;

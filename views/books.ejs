@@ -45,10 +45,12 @@
 
             <!-- books -->
 
+            <div class="book-title"> Select a book</div>
+
             <div class="book">
                 <% books.forEach(e=>{ %>
                     <!-- Book component -->
-                    <a class="book-box" href="/<%= version.id %>/<%= e.id %>">
+                    <a class="book-box" href="/<%= version.id %>/books/<%= e.id %>">
                         <p class="book-name">
                             <%= e.name %>
                         </p>

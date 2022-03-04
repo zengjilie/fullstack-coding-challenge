@@ -10,6 +10,12 @@
   color: white;
 }
 
+.books .book-title {
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 20px;
+}
+
 .books .book {
   width: 100%;
   display: -ms-grid;

@@ -15,6 +15,12 @@
         }
     }
 
+    .chapter-title{
+        font-size: $fsz3;
+        color:$primaryColor;
+        margin-bottom: 20px;
+    }
+
     .chapters-box{
         @include flexCenterH;
         flex-wrap:wrap;

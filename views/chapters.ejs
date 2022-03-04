@@ -39,7 +39,7 @@
 
             <ul class="breadcrumb">
                 <li>
-                    <a href="<%= chapters[0].bibleId%>">
+                    <a href="/<%= chapters[0].bibleId%>">
                         / <%= version %>
                     </a>
                 </li>
@@ -50,11 +50,13 @@
 
             </ul>
 
+            <div class="chapter-title"> Select a Chapter</div>
+
             <!-- Chapters -->
             <div class="chapters-box">
                 <% chapters.forEach(e=>{ %>
                     <!-- Chapter component -->
-                    <a class="chapter" href="">
+                    <a class="chapter" href="/<%= chapters[0].bibleId%>/chapters/<%= e.id %>  ">
                         <p class="chapter-number">
                             <%= e.number %>
                         </p>

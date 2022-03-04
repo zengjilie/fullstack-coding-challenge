@@ -47,8 +47,8 @@ app.get('/:bibleId', async (req, res) => {
     res.render('books', { books, version });
 })
 
-app.get('/:bibleId/:bookId',async(req, res)=>{
-    const {bibleId, bookId} = req.params;
+app.get('/:bibleId/books/:bookId', async (req, res) => {
+    const { bibleId, bookId } = req.params;
     const response = await bible.get(`/${bibleId}/books/${bookId}/chapters`);
     const response2 = await bible.get(`/${req.params.bibleId}`);
 
@@ -56,9 +56,31 @@ app.get('/:bibleId/:bookId',async(req, res)=>{
     const version = response2?.data?.data.abbreviation;//string
 
     // console.log(chapters);
-    console.log(version);
 
-    res.render('chapters',{chapters, version, book:bookId});
+    res.render('chapters', { chapters, version, book: bookId });
+})
+
+app.get('/:bibleId/chapters/:chapterId', async (req, res) => {
+    const { bibleId, chapterId } = req.params;
+    const response = await bible.get(`/${bibleId}/chapters/${chapterId}/verses?content-type=json`);
+
+    const totalVerses = response?.data?.data;
+    const verseHolder = [];
+
+    for (let i = 0; i < totalVerses.length; i++) {
+        const verseId = totalVerses[i].id;
+        const response2 = await bible.get(`/${bibleId}/verses/${verseId}`);
+        const singleVerse = response2?.data?.data;
+        console.log(singleVerse);
+    }
+
+    // const verseId = totalVerses[0].id;
+    // const response2 = await bible.get(`/${bibleId}/verses/${verseId}`);
+    // const singleVerse = response2?.data?.data;
+
+    // res.json(totalVerses);
+    // res.json(verseHolder);
+    res.json();
 })
 
 //port

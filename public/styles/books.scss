@@ -10,6 +10,12 @@
         color:$primaryColor;
     }
 
+    .book-title{
+        font-size: $fsz3;
+        color:$primaryColor;
+        margin-bottom: 20px;
+    }
+
     .book{
         width:100%;
         display: grid;
