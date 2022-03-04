@@ -1,0 +1,47 @@
+.chapters {
+  margin-top: 100px;
+  padding: 0 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.chapters .breadcrumb {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+}
+
+.chapters .breadcrumb a {
+  color: #4a4a4a;
+}
+
+.chapters .chapters-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.chapters .chapters-box .chapter {
+  height: 50px;
+  width: 50px;
+  background-color: #2d2d2d;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: white;
+}
+
+.chapters .chapters-box .chapter:hover {
+  background-color: #4a4a4a;
+}
+/*# sourceMappingURL=chapters.css.map */

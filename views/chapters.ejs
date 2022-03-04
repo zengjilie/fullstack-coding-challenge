@@ -1,0 +1,67 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OH MY BIBLE</title>
+    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="/styles/chapters.css">
+    <style>
+        body {
+            margin: 0;
+            position: relative;
+            background-color: rgb(25, 25, 25);
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <%- include ('components/Header.ejs'); %>
+
+        <div class="chapters">
+
+            <ul class="breadcrumb">
+                <li>
+                    <a href="<%= chapters[0].bibleId%>">
+                        / <%= version %>
+                    </a>
+                </li>
+
+                <li>
+                    &nbsp;/ <%= book %> 
+                </li>
+
+            </ul>
+
+            <!-- Chapters -->
+            <div class="chapters-box">
+                <% chapters.forEach(e=>{ %>
+                    <!-- Chapter component -->
+                    <a class="chapter" href="">
+                        <p class="chapter-number">
+                            <%= e.number %>
+                        </p>
+                    </a>
+                    <% }) %>
+            </div>
+        </div>
+</body>
+
+</html>

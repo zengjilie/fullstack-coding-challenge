@@ -1,0 +1,37 @@
+@import "./variables";
+
+.chapters{
+    margin-top:100px;
+    padding:0 20px;
+    max-width:$globalWidth;
+    @include marginCenter;
+
+    .breadcrumb{
+        @include flexCenterH;
+        color:$primaryColor;
+
+        a{
+            color:$primaryColor4;
+        }
+    }
+
+    .chapters-box{
+        @include flexCenterH;
+        flex-wrap:wrap;
+
+
+        .chapter{
+            height:50px;
+            width:50px;
+            background-color:$primaryColor3 ;
+            margin-right:20px;
+            margin-bottom:20px;
+            text-align: center;
+            color:$primaryColor;
+            &:hover{
+                background-color: $primaryColor4 ;
+            }
+        }
+    }
+
+}

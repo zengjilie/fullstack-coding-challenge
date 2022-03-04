@@ -24,55 +24,67 @@
     }
 }
 
-.home-bible-versions{
+.home-bible-box{
     margin-top:20px;
     padding:0 20px;
-    display:grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap:20px;
     max-width:$globalWidth;
     @include marginCenter;
 
-    .home-bible-version{
-        height:200px;
-        background-color:rgb(45, 45, 45);
-        position:relative;
-        padding:10px 20px;
-        @include flexCenterH;
-        cursor: pointer;
+    .home-bible-title{
+        font-size: $fsz3;
+        color:$primaryColor;
+        margin-bottom: 20px;
+    }
 
-        &:hover{
-            background-color:rgb(74, 74, 74);
-        }
+    .home-bible-versions{
+        display:grid;
+        grid-template-columns: repeat(3, 1fr); 
+        gap:20px;
 
-        &:hover .book-button{
-            opacity:1;
-        }
 
-        .home-bible-version-box{
-            .book-abbr{
-                color:$fc1;
-                font-size: $fsz3;
-                text-align:left;
-                margin-bottom:30px;
-            }
-
-            .version-name{
-                color:$fc1;
-                text-align:left;
-            }
-        }
-        
-        .book-button{
-            position:absolute;
-            top:0;
-            right:0;
-            background-color: $primaryColor;
-            width:50px;
-            height:50px;
-            border:none;
-            opacity:0;
+        .home-bible-version{
+            height:200px;
+            background-color:$primaryColor3;
+            position:relative;
+            padding:10px 20px;
+            @include flexCenterH;
             cursor: pointer;
+
+            &:hover{
+                background-color:$primaryColor4;
+            }
+
+            &:hover .book-button{
+                opacity:1;
+            }
+
+
+            .home-bible-version-box{
+                .book-abbr{
+                    color:$fc1;
+                    font-size: $fsz3;
+                    text-align:left;
+                    margin-bottom:30px;
+                }
+
+                .version-name{
+                    color:$fc1;
+                    text-align:left;
+                }
+            }
+            
+            .book-button{
+                position:absolute;
+                top:0;
+                right:0;
+                background-color: $primaryColor;
+                width:50px;
+                height:50px;
+                border:none;
+                opacity:0;
+                cursor: pointer;
+            }
         }
     }
 }
+

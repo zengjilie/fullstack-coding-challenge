@@ -48,8 +48,17 @@ app.get('/:bibleId', async (req, res) => {
 })
 
 app.get('/:bibleId/:bookId',async(req, res)=>{
-    // const response = await bible.get(`/${}`);
-    
+    const {bibleId, bookId} = req.params;
+    const response = await bible.get(`/${bibleId}/books/${bookId}/chapters`);
+    const response2 = await bible.get(`/${req.params.bibleId}`);
+
+    const chapters = response?.data?.data;
+    const version = response2?.data?.data.abbreviation;//string
+
+    // console.log(chapters);
+    console.log(version);
+
+    res.render('chapters',{chapters, version, book:bookId});
 })
 
 //port
