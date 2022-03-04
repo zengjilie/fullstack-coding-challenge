@@ -4,5 +4,22 @@
 .home-image{
     width:100%;    
     height:500px;
+    @include flexCenterH;
     @include imageCenterGradient("/images/lastsupper.jpeg");
+
+    .home-verse{
+        color:$primaryColor;
+        max-width:$globalWidth;
+        @include marginCenter;
+    }
+
+    .home-verse-text{
+        font-size: $fsz2;
+        line-height:1.5;
+    }
+
+    .home-verse-chapter{
+        font-size: $fsz1;
+        text-align: right;
+    }
 }

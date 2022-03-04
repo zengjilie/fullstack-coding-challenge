@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>OH MY BIBLE</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/styles/bibleVersionCard.css">
     <link rel="stylesheet" href="styles/home.css">
@@ -31,18 +31,32 @@
 
         <!-- Image -->
         <div class="home-image">
+
             <!-- Verse of the day -->
-            <%- include('components/VerseOfDay.ejs')  %> 
+            <div class="home-verse">
+
+                <p class="home-verse-text">
+                    <% const text=verse.text.replace('</p>','') %>
+                        <%= text %>
+                </p>
+                <p class="home-verse-chapter">
+                    - <%= verse.bookname %>
+                        <%= verse.chapter %> : <%= verse.verse %>
+                </p>
+            </div>
         </div>
 
 
-        <!-- Versions -->
+        <!-- Books -->
         <div class="home-bible-versions">
             <% const engBible=JSON.parse(bbData) %>
                 <% engBible.forEach(e=> { %>
-                    <p>
-                        <%= e.name %>
-                    </p>
+
+                    <!-- bookComponent -->
+                    <div class="bible-version-book">
+                        <p class="bible-version-abbr"></p>
+                    </div>
+                    <%= e.name %>
                     <%}) %>
         </div>
 </body>

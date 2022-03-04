@@ -1,6 +1,6 @@
 const express = require('express');
 const bible = require('./tools/bible.js');
-
+const getVerse = require('./tools/verseGenerator.js');
 const app = express();
 
 //Set View Engine
@@ -13,29 +13,25 @@ app.use(express.static('public'));
 
 //Routes
 app.get('/', async (req, res) => {
-    bible.get('')
-        .then((response) => {
+    const response = await bible.get('')
 
-            const { data } = response.data;
+    const { data } = response.data;
 
-            //=== [Data from Bible.api is not cleaned !!!] ===
+    //=== [Data from Bible.api is not cleaned !!!] ===
 
-            //=== Filtering all English Bibles Remove all the duplicate entry ===
+    //=== Filtering all English Bibles Remove all the duplicate entry ===
 
-            const set = new Set();
+    const set = new Set();
 
-            let engBible = data.filter(entry =>{
-                if(entry.language.name == 'English' && !set.has(entry.dblId)){
-                    set.add(entry.dblId);
-                    return true;
-                }
-            });
-
-            //=== VerseOfDay===
-
-            res.render('index', { bbData: JSON.stringify(engBible)});
-        })
-        .catch(err => console.log(err))
+    let engBible = data.filter(entry => {
+        if (entry.language.name == 'English' && !set.has(entry.dblId)) {
+            set.add(entry.dblId);
+            return true;
+        }
+    });
+    //=== VerseOfDay===
+    const verse = await getVerse();
+    res.render('index', { bbData: JSON.stringify(engBible),verse:verse[0] });
 });
 
 //port

@@ -1,27 +1,27 @@
-const bible = require('./bible.js');
-const bibleCount = require('./bibleCounts.json');
+const verseData = require('./bibleCounts.json');//total 66 books
+const axios = require('axios');
 
+const getVerse = async () => {
+    // Public API
+    const baseURL = 'https://labs.bible.org/api/?passage=';
 
-const BIBLE_ID = '685d1470fe4d5c3b-01';
+    //Use Today's date 
+    const random = new Date().getDate() - 1;
 
-const VERSES = [
-    ...bibleCount.map(e=>{abbr:e.abbr, )
-];
+    const book = verseData[random];
+    // console.log(book);
 
-console.log(VERSES);
+    const bookName = book.abbr;
+    const bookChapterNum = book.chapters.length;
+    const randomChapter = book.chapters[bookChapterNum > random ? random : random % bookChapterNum];
 
-const verseIndex = new Date().getDate();
-console.log(verseIndex);
+    const chapter = randomChapter.chapter;
+    const verses = randomChapter.verses;
 
-const verseID = VERSES[verseIndex];
+    const url = baseURL + bookName + ' ' + chapter + ':' + verses + '&type=json&formatting=para';
+    const { data: response } = await axios.get(url)
 
-const getVerse = () => {
-    const url = `/${BIBLE_ID}/search?query=${verseID}`;
-    bible.get(url)
-        .then(response => {
-            console.log(response);
-        })
-        .catch(err => {
-            console.log(err);
-        })
+    return response;
 }
+
+module.exports = getVerse;

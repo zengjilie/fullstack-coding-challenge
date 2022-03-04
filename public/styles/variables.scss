@@ -7,10 +7,10 @@ $primaryColor2: black;
 $accentColor: blue;
 
 //Font system
-$fontStyle:'times';
-$fontSize1:1rem;
-$fontSize2:1.2rem;
-$fontSize3:1.5rem;
+$fst:'times';
+$fsz1:1rem;
+$fsz2:1.2rem;
+$fsz3:1.5rem;
 
 //Flex
 @mixin flexCenterH{
@@ -22,6 +22,8 @@ $fontSize3:1.5rem;
 @mixin flexCenterV{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
 //Image
