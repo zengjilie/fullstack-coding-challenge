@@ -34,7 +34,7 @@
 
             <!-- Verse of the day -->
             <div class="home-verse">
-
+                <p>Verse of the Day</p>
                 <p class="home-verse-text">
                     <% const text=verse.text.replace('</p>','') %>
                         <%= text %>
@@ -48,15 +48,21 @@
 
 
         <!-- Books -->
-        <div class="home-bible-versions">
+        <div class="home-bible-books">
             <% const engBible=JSON.parse(bbData) %>
                 <% engBible.forEach(e=> { %>
 
                     <!-- bookComponent -->
-                    <div class="bible-version-book">
-                        <p class="bible-version-abbr"></p>
+                    <div class="home-bible-book">
+                        <div class="home-bible-book-box">
+                            <p class="book-abbr">
+                                <%= e.abbreviation%>
+                            </p>
+                            <p class="book-name">
+                                <%= e.name%>
+                            </p>
+                        </div>
                     </div>
-                    <%= e.name %>
                     <%}) %>
         </div>
 </body>

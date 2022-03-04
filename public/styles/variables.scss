@@ -1,5 +1,5 @@
 //Global width
-$globalWidth:800px;
+$globalWidth:900px;
 
 // Color Schema
 $primaryColor: white;
@@ -12,18 +12,28 @@ $fsz1:1rem;
 $fsz2:1.2rem;
 $fsz3:1.5rem;
 
+$fc1:white;
+$fc2:rgb(171, 164, 164);
+$fc3:rgb(104, 99, 99);
+
 //Flex
 @mixin flexCenterH{
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
 @mixin flexCenterV{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content:center;
+}
+
+@mixin flexCenterV2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-between;
 }
 
 //Image

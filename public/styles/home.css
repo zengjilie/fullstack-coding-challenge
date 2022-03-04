@@ -11,7 +11,7 @@
 }
 
 .header .header-container {
-  max-width: 800px;
+  max-width: 900px;
   height: 100%;
   padding: 0 20px;
   display: -webkit-box;
@@ -31,37 +31,76 @@
 
 .home-image {
   width: 100%;
-  height: 500px;
+  height: 80vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.8)), color-stop(rgba(0, 0, 0, 0.6)), to(rgba(0, 0, 0, 0.8))), url("/images/lastsupper.jpeg");
   background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url("/images/lastsupper.jpeg");
+  background-attachment: fixed;
 }
 
 .home-image .home-verse {
   color: white;
-  max-width: 800px;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .home-image .home-verse-text {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   line-height: 1.5;
 }
 
 .home-image .home-verse-chapter {
   font-size: 1rem;
   text-align: right;
+}
+
+.home-bible-books {
+  margin-top: 20px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-bible-books .home-bible-book {
+  text-align: center;
+  height: 200px;
+  background-color: black;
+  padding: 10px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+
+.home-bible-books .home-bible-book .home-bible-book-box .book-abbr {
+  color: white;
+}
+
+.home-bible-books .home-bible-book .home-bible-book-box .book-name {
+  color: #aba4a4;
 }
 /*# sourceMappingURL=home.css.map */
