@@ -1,7 +1,5 @@
 const express = require('express');
-const axios = require('axios');
-
-require('dotenv').config();
+const bible = require('./bible.js');
 
 const app = express();
 
@@ -12,15 +10,6 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.static('public'));
 
-//API
-const bible = axios.create({
-    baseURL: process.env.API_URL,
-    timeout: 1000,
-    headers: {
-        'api-key': process.env.API_KEY,
-        'Accept': 'application/json'
-    },
-})
 
 //Routes
 app.get('/', async (req, res) => {
@@ -42,6 +31,7 @@ app.get('/', async (req, res) => {
                 }
             });
 
+            //=== VerseOfDay===
 
             res.render('index', { bbData: JSON.stringify(engBible)});
         })
