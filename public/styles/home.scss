@@ -1,0 +1,8 @@
+@import "./header";
+@import "./variables";
+
+.home-image{
+    width:$full;    
+    height:500px;
+    @include imageCenter("/images/lastsupper.jpeg");
+}

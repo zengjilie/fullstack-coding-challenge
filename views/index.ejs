@@ -6,16 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/styles/bibleVersionCard.css">
+    <link rel="stylesheet" href="styles/home.css">
+    <style>
+        html,
+        body {
+            margin: 0;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: 0;
+        }
+    </style>
 </head>
 
 <body>
-    Home page
-    <div class="bible-versions">
-        <% const engBible = JSON.parse(bbData) %>
-        <% engBible.forEach(e => { %>
-            <p><%= e.name %> </p>
-        <%}) %> 
-    </div>
+    <!-- Header -->
+    <%- include ('components/Header.ejs');%>
+
+        <!-- Image -->
+        <div class="home-image"></div>
+
+        <!-- Versions -->
+        <div class="bible-versions">
+            <% const engBible=JSON.parse(bbData) %>
+                <% engBible.forEach(e=> { %>
+                    <p>
+                        <%= e.name %>
+                    </p>
+                    <%}) %>
+        </div>
 </body>
 
 <script type="text/javascript">

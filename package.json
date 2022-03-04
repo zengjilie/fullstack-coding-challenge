@@ -20,7 +20,8 @@
     "axios": "^0.26.0",
     "dotenv": "^16.0.0",
     "ejs": "^3.1.6",
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "sass": "^1.49.9"
   },
   "description": "",
   "devDependencies": {

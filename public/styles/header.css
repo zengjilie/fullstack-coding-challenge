@@ -1,0 +1,16 @@
+.header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.header-title {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.header-image {
+  width: full;
+  height: 500px;
+  background-image: "/images/lastsupper.jpeg";
+}
+/*# sourceMappingURL=header.css.map */
