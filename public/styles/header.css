@@ -1,16 +1,23 @@
 .header {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px #515151 solid;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.header-title {
+.header-container {
+  max-width: 800px;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-container .header-title {
   font-size: 1.5rem;
   color: white;
-}
-
-.header-image {
-  width: full;
-  height: 500px;
-  background-image: "/images/lastsupper.jpeg";
 }
 /*# sourceMappingURL=header.css.map */

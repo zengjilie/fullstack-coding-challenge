@@ -2,7 +2,7 @@
 @import "./variables";
 
 .home-image{
-    width:$full;    
+    width:100%;    
     height:500px;
-    @include imageCenter("/images/lastsupper.jpeg");
+    @include imageCenterGradient("/images/lastsupper.jpeg");
 }

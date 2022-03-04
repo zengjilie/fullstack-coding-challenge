@@ -8,10 +8,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/styles/bibleVersionCard.css">
     <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/header.css">
+
     <style>
-        html,
         body {
             margin: 0;
+            position: relative;
         }
 
         h1,
@@ -26,18 +28,18 @@
     <!-- Header -->
     <%- include ('components/Header.ejs');%>
 
-        <!-- Image -->
-        <div class="home-image"></div>
+    <!-- Image -->
+    <div class="home-image"></div>
 
-        <!-- Versions -->
-        <div class="bible-versions">
-            <% const engBible=JSON.parse(bbData) %>
-                <% engBible.forEach(e=> { %>
-                    <p>
-                        <%= e.name %>
-                    </p>
-                    <%}) %>
-        </div>
+    <!-- Versions -->
+    <div class="home-bible-versions">
+        <% const engBible=JSON.parse(bbData) %>
+            <% engBible.forEach(e=> { %>
+                <p>
+                    <%= e.name %>
+                </p>
+            <%}) %>
+    </div>
 </body>
 
 <script type="text/javascript">
