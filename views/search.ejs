@@ -1,16 +1,21 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OH MY BIBLE</title>
     <link rel="stylesheet" href="/styles/header.css">
-    <link rel="stylesheet" href="/styles/books.css">
+    <link rel="stylesheet" href="/styles/search.css">
     <style>
         body {
             margin: 0;
             position: relative;
             background-color: rgb(25, 25, 25);
+        }
+
+        p {
+            margin: 0;
         }
 
         h1,
@@ -29,9 +34,77 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <%- include ('components/header.ejs');%>
+        <div class="search">
 
+            <p class="search-query">
+                Results for "<%= results.query %>"
+            </p>
+
+            <p class="search-number">
+                showing
+                <% if(results.total <=10){ %>
+                    <strong>
+                        <%= results.total %>
+                    </strong> of <strong>10</strong> results
+                    <% }else{ %>
+                        <strong>10</strong> of <strong>
+                            <%= results.total %>
+                        </strong> results
+                        <% } %>
+            </p>
+
+
+            <div class="search-box">
+                <% results.verses.forEach(e=> { %>
+                    <div class="search-content">
+                        <p class="search-title">
+                            <strong>
+                                <%= e.reference %>
+                            </strong>
+                        </p>
+                        <p class="search-text">
+                            <%= e.text%>
+                        </p>
+                        <a class="search-button" href="/<%= bibleId %>/chapters/<%= e.chapterId %>">VIEW CHAPTER 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                            </svg>
+                        </a>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+
+        <script>
+            const temp = '<%- JSON.stringify(bibleId) %>';
+            const bibleId = JSON.parse(temp);
+
+            let header = document.getElementsByClassName('header-container')[0];
+
+            //header element
+            const headerForm = document.createElement('form');
+            headerForm.action = `/${bibleId}/search`;
+            headerForm.method = 'GET';
+            headerForm.className = 'header-form';
+            headerForm.onsubmit = 'handleSubmit';
+
+            //input element
+            const headerInput = document.createElement('input');
+            headerInput.type = 'text';
+            headerInput.className = 'header-input';
+            headerInput.placeholder = 'Search...';
+            headerInput.name = 'query';
+
+            headerForm.appendChild(headerInput);
+            header.appendChild(headerForm);
+
+        </script>
 </body>
+
 </html>

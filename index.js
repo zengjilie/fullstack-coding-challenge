@@ -112,9 +112,9 @@ app.get('/:bibleId/search', async (req, res) => {
     console.log(bibleId);
     const response = await bible.get(`/${bibleId}/search?query=${query}&sort=relevance`);
     const results = response?.data?.data;
+    console.log(results);
 
-    res.render('search', { results });
-
+    res.render('search', { results, bibleId });
 })
 
 //port
