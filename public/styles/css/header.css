@@ -42,3 +42,9 @@
   outline: none;
   width: 300px;
 }
+@media (max-width: 480px) {
+  .header .header-container .header-form .header-input:focus {
+    outline: none;
+    width: 100px;
+  }
+}

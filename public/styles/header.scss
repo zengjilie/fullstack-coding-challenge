@@ -41,6 +41,13 @@
                     outline:none;
                     width:300px;
                 }
+                @include sm{
+
+                    &:focus{
+                        outline:none;
+                        width:100px;
+                    }
+                }
             }
         }
 
