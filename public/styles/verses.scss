@@ -5,6 +5,7 @@
     padding:0 20px;
     max-width:$globalWidth;
     @include marginCenter;
+    position: relative;
 
     .breadcrumb{
         @include flexCenterH;
@@ -47,7 +48,28 @@
     }
 
     .single-verse{
-        
+        position:fixed;
+        top:0;
+        left:0;
+        color:$primaryColor;
+        height:100vh;
+        width:100vw;
+        background-color:rgba(0, 0, 0, 0.9);
+
+        .single-verse-box{
+            max-width:$globalWidth;
+            transform:translateY(30vh);
+            @include marginCenter;
+
+            .single-verse-text{
+                font-size: $fsz3;
+            }
+
+            .single-verse-ref{
+                font-size: $fsz2;
+                text-align:right;
+            }
+        }
     }
 
     .verse-content{

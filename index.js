@@ -45,7 +45,7 @@ app.get('/:bibleId', async (req, res) => {
     const books = response?.data?.data;//array
     const version = response2?.data?.data;//string
 
-    console.log(books);
+    // console.log(books);
 
     res.render('books', { books, version });
 })
@@ -74,30 +74,34 @@ app.get('/:bibleId/chapters/:chapterId', async (req, res) => {
     const totalVerses = response2?.data?.data;
     const bibleVersion = response3?.data?.data.abbreviation;
 
-    const paragraphs = [];
+    const paragraphs = [];//verses organized by paragraph
+    const singleVerses = [];//single verses
+
     chapterContent.content.forEach(e => {
         let curPara = '';
         e.items.forEach(entry => {
+            let curVerse = ''
             if (entry.type === 'tag') {
                 curPara += entry.items[0].text + ' ';
             } else if (entry.type === 'text') {
                 curPara += entry.text;
+                curVerse += entry.text;
+                singleVerses.push(curVerse);
             }
         })
         paragraphs.push(curPara);
     })
 
-
+    // console.log(singleVerses);
     // res.json(totalVerses);
-
-    res.render('verses', { paragraphs, totalVerses, version: bibleVersion, bookId, number });
+    res.render('verses', { paragraphs, totalVerses, version: bibleVersion, bookId, number, singleVerses });
 })
 
 app.get('/:bibleId/verses/:verseId', async (req, res) => {
     const { bibleId, verseId } = req.params;
     const response = await bible.get(`/${bibleId}/verses/${verseId}`);
     const verse = response?.data.data;
-    console.log(verse);
+    // console.log(verse);
     res.json(verse);
 })
 
