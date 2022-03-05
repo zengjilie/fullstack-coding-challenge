@@ -2,6 +2,7 @@ const express = require('express');
 const bible = require('./tools/bible.js');
 const getVerse = require('./tools/verseGenerator.js');
 const axios = require('axios');
+const { resolveInclude } = require('ejs');
 const app = express();
 
 //Set View Engine
@@ -35,6 +36,7 @@ app.get('/', async (req, res) => {
     const verse = await getVerse();
     res.render('index', { bbData: JSON.stringify(engBible), verse: verse[0] });
 });
+
 
 app.get('/:bibleId', async (req, res) => {
     const response = await bible.get(`/${req.params.bibleId}/books?include-chapters=true`);
@@ -90,6 +92,13 @@ app.get('/:bibleId/chapters/:chapterId', async (req, res) => {
     // res.json(totalVerses);
 
     res.render('verses', { paragraphs, totalVerses, version: bibleVersion, bookId, number });
+})
+
+app.get('/:bibleId/verses/:verseId', async (req, res) => {
+    const {bibleId, verseId} = req.params;
+    const response = await bible.get(`/${bibleId}/verses/${verseId}`);
+    
+    res.json({ data: 1 });
 })
 
 //port

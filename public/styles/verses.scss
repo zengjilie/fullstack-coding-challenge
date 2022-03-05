@@ -26,17 +26,36 @@
         flex-wrap:wrap;
 
 
-        .verse{
+        .verse-number{
             height:50px;
             width:50px;
             background-color:$primaryColor3 ;
+            margin:0;
             margin-right:20px;
             margin-bottom:20px;
             text-align: center;
             color:$primaryColor;
+            border:none;
+            @include flexCenterV;
+            text-align: center;
+            cursor: pointer;
+
             &:hover{
                 background-color: $primaryColor4 ;
             }
+        }
+    }
+
+    .verse-content{
+        p{
+            font-size: $fsz3;
+            color:$primaryColor;
+            margin-bottom: 20px;
+        }  
+
+        .verse-text{
+            font-size: $fsz1;
+            line-height: 2;
         }
     }
 }
