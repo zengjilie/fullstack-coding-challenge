@@ -9,5 +9,5 @@ Tesing: Jest
 ## Reference
 https://docs.api.bible/tutorials/verse-of-the-day
 https://labs.bible.org/NETBibleTagger
+https://bolls.life/api/#Fetch%20a%20chapter
 https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/blob/master/src/ascii/book_names.txt
-https://github.com/bkuhl/bible-verse-counts-per-chapter/blob/master/bible.json

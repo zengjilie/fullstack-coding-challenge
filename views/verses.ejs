@@ -1,0 +1,81 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OH MY BIBLE</title>
+    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="/styles/verses.css">
+    <style>
+        body {
+            margin: 0;
+            position: relative;
+            background-color: rgb(25, 25, 25);
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <%- include ('components/Header.ejs');%>
+
+        <div class="verses">
+
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/<%= totalVerses[0].bibleId%>">
+                        / <%= version%>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/<%= totalVerses[0].bibleId%>/books/<%= bookId %> ">
+                        &nbsp;/ <%= bookId %>
+                    </a>
+                </li>
+
+                <li>
+                   &nbsp;/ <%= number %>
+                </li>
+            </ul>
+
+            <div class="verse-title"> Select a Verse</div>
+
+            <!-- verses -->
+            <div class="verse-box">
+                <% totalVerses.forEach((e,index)=>{ %>
+                    <!-- verse component -->
+                    <a class="verse" href="/<%=e.bibleId%>/verses/<%= e.id %>">
+                        <p class="verse-number">
+                            <%= index%>
+                        </p>
+                    </a>
+                    <% }) %>
+            </div>
+
+            <!-- verse content -->
+            <div class="verse-content">
+                <% paragraps.forEach(e =>{ %>
+                    
+                <% }) %> 
+            </div>
+</body>
+
+</html>

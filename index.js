@@ -1,6 +1,7 @@
 const express = require('express');
 const bible = require('./tools/bible.js');
 const getVerse = require('./tools/verseGenerator.js');
+const axios = require('axios');
 const app = express();
 
 //Set View Engine
@@ -53,34 +54,42 @@ app.get('/:bibleId/books/:bookId', async (req, res) => {
     const response2 = await bible.get(`/${req.params.bibleId}`);
 
     const chapters = response?.data?.data;
-    const version = response2?.data?.data.abbreviation;//string
+    const bibleVersion = response2?.data?.data.abbreviation;//string
 
     // console.log(chapters);
 
-    res.render('chapters', { chapters, version, book: bookId });
+    res.render('chapters', { chapters, version: bibleVersion, bookId });
 })
 
 app.get('/:bibleId/chapters/:chapterId', async (req, res) => {
     const { bibleId, chapterId } = req.params;
-    const response = await bible.get(`/${bibleId}/chapters/${chapterId}/verses?content-type=json`);
+    const response = await bible.get(`/${bibleId}/chapters/${chapterId}?content-type=json`);
+    const response2 = await bible.get(`/${bibleId}/chapters/${chapterId}/verses?content-type=json`);
+    const response3 = await bible.get(`/${req.params.bibleId}`);
 
-    const totalVerses = response?.data?.data;
-    const verseHolder = [];
+    const chapterContent = response?.data?.data;
+    const { bookId, number } = chapterContent;
+    const totalVerses = response2?.data?.data;
+    const bibleVersion = response3?.data?.data.abbreviation;
+    console.log(chapterContent);
 
-    for (let i = 0; i < totalVerses.length; i++) {
-        const verseId = totalVerses[i].id;
-        const response2 = await bible.get(`/${bibleId}/verses/${verseId}`);
-        const singleVerse = response2?.data?.data;
-        console.log(singleVerse);
-    }
+    const paragraphs = [];
+    chapterContent.content.forEach(e => {
+        let curPara = '';
+        e.items.forEach(entry => {
+            if (entry.type === 'tag') {
+                curPara += entry.items[0].text + ' ';
+            } else if (entry.type === 'text') {
+                curPara += entry.text;
+            }
+        })
+        paragraphs.push(curPara);
+    })
 
-    // const verseId = totalVerses[0].id;
-    // const response2 = await bible.get(`/${bibleId}/verses/${verseId}`);
-    // const singleVerse = response2?.data?.data;
 
     // res.json(totalVerses);
-    // res.json(verseHolder);
-    res.json();
+
+    res.render('verses', { paragraphs, totalVerses, version: bibleVersion, bookId, number });
 })
 
 //port

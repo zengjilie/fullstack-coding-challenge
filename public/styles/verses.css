@@ -1,4 +1,4 @@
-.chapters {
+.verses {
   margin-top: 100px;
   padding: 0 20px;
   max-width: 900px;
@@ -6,7 +6,7 @@
   margin-right: auto;
 }
 
-.chapters .breadcrumb {
+.verses .breadcrumb {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -16,17 +16,17 @@
   color: white;
 }
 
-.chapters .breadcrumb a {
+.verses .breadcrumb a {
   color: #4a4a4a;
 }
 
-.chapters .chapter-title {
+.verses .verse-title {
   font-size: 1.5rem;
   color: white;
   margin-bottom: 20px;
 }
 
-.chapters .chapter-box {
+.verses .verse-box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -37,7 +37,7 @@
       flex-wrap: wrap;
 }
 
-.chapters .chapter-box .chapter {
+.verses .verse-box .verse {
   height: 50px;
   width: 50px;
   background-color: #2d2d2d;
@@ -47,7 +47,7 @@
   color: white;
 }
 
-.chapters .chapter-box .chapter:hover {
+.verses .verse-box .verse:hover {
   background-color: #4a4a4a;
 }
-/*# sourceMappingURL=chapters.css.map */
+/*# sourceMappingURL=verses.css.map */

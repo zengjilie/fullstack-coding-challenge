@@ -1,6 +1,6 @@
 @import "./variables";
 
-.chapters{
+.verses{
     margin-top:100px;
     padding:0 20px;
     max-width:$globalWidth;
@@ -15,18 +15,18 @@
         }
     }
 
-    .chapter-title{
+    .verse-title{
         font-size: $fsz3;
         color:$primaryColor;
         margin-bottom: 20px;
     }
 
-    .chapter-box{
+    .verse-box{
         @include flexCenterH;
         flex-wrap:wrap;
 
 
-        .chapter{
+        .verse{
             height:50px;
             width:50px;
             background-color:$primaryColor3 ;
@@ -39,5 +39,4 @@
             }
         }
     }
-
 }
