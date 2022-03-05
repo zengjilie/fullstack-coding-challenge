@@ -34,7 +34,7 @@ app.get('/', async (req, res) => {
 
     //=== VerseOfDay===
     const verse = await getVerse();
-    res.render('index', { bbData: JSON.stringify(engBible), verse: verse[0] });
+    res.render('home', { bbData: JSON.stringify(engBible), verse: verse[0] });
 });
 
 

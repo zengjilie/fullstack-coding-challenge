@@ -6,8 +6,8 @@
   width: 100%;
   height: 50px;
   padding: 10px 0;
-  border-bottom: 1px #515151 solid;
-  background-color: rgba(0, 0, 0, 0.5);
+  border-bottom: 0.5px #515151 solid;
+  background-color: #131313;
 }
 
 .header .header-container {
@@ -22,6 +22,11 @@
           align-items: center;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .header .header-container .header-title {
