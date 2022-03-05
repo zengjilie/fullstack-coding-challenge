@@ -57,17 +57,17 @@
                 <% const engBible=JSON.parse(bbData) %>
                     <% engBible.forEach(e=> { %>
 
-                        <!-- bookComponent -->
+                        <!-- version -->
                         <a class="home-bible-version" href="<%= e.id %>">
                             <div class="home-bible-version-box">
-                                <p class="book-abbr">
+                                <p class="version-abbr">
                                     <%= e.abbreviation%>
                                 </p>
                                 <p class="version-name">
                                     <%= e.name%>
                                 </p>
                             </div>
-                            <button class="book-button">
+                            <button class="version-button">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-arrow-right" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"

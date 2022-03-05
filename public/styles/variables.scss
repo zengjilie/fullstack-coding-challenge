@@ -20,6 +20,26 @@ $fc1:white;
 $fc2:rgb(171, 164, 164);
 $fc3:rgb(104, 99, 99);
 
+//keyframe
+@mixin keyframe($name){
+    @keyframes #{$name}{
+        @content;
+    }
+}
+
+//animation
+@mixin animation($name, $duration, $method, $times){
+    animation: $name, $duration, $method, $times;
+}
+
+//Fade
+@mixin fade {
+    transition:background-color, 0.2s;
+    transition:opacity, 0.2s;
+    transition:display, 0.2s;
+
+}
+
 //Flex
 @mixin flexCenterH{
     display: flex;

@@ -38,6 +38,9 @@
   border-radius: 0.1rem;
   background-color: #2d2d2d;
   cursor: pointer;
+  transition: background-color, 0.2s;
+  transition: opacity, 0.2s;
+  transition: display, 0.2s;
 }
 .books .book .book-box:hover {
   background-color: #4a4a4a;
@@ -52,6 +55,9 @@
   color: white;
   border: none;
   opacity: 0;
+  transition: background-color, 0.2s;
+  transition: opacity, 0.2s;
+  transition: display, 0.2s;
 }
 .books .book .book-box .book-button svg {
   height: 20px;

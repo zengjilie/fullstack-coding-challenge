@@ -6,6 +6,9 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  transition: background-color, 0.2s;
+  transition: opacity, 0.2s;
+  transition: display, 0.2s;
   background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url("../../images/1.jpeg");
   transition: background-image, 0.5s;
   background-attachment: fixed;
@@ -61,12 +64,15 @@
   padding: 10px 20px;
   display: flex;
   align-items: center;
+  transition: background-color, 0.2s;
+  transition: opacity, 0.2s;
+  transition: display, 0.2s;
   cursor: pointer;
 }
 .home-bible-box .home-bible-versions .home-bible-version:hover {
   background-color: #4a4a4a;
 }
-.home-bible-box .home-bible-versions .home-bible-version:hover .book-button {
+.home-bible-box .home-bible-versions .home-bible-version:hover .version-button {
   opacity: 1;
 }
 .home-bible-box .home-bible-versions .home-bible-version .home-bible-version-box {
@@ -75,7 +81,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.home-bible-box .home-bible-versions .home-bible-version .home-bible-version-box .book-abbr {
+.home-bible-box .home-bible-versions .home-bible-version .home-bible-version-box .version-abbr {
   color: white;
   font-size: 1.5rem;
   text-align: left;
@@ -86,7 +92,7 @@
   color: white;
   text-align: left;
 }
-.home-bible-box .home-bible-versions .home-bible-version .book-button {
+.home-bible-box .home-bible-versions .home-bible-version .version-button {
   position: absolute;
   top: 0;
   right: 0;
@@ -96,4 +102,7 @@
   border: none;
   opacity: 0;
   cursor: pointer;
+  transition: background-color, 0.2s;
+  transition: opacity, 0.2s;
+  transition: display, 0.2s;
 }

@@ -37,7 +37,7 @@
             border-radius: 0.1rem;
             background-color:$primaryColor3;
             cursor: pointer;
-
+            @include fade;
             &:hover{
                 background-color:$primaryColor4;
             }
@@ -54,6 +54,7 @@
                 color:$primaryColor;
                 border:none;
                 opacity:0;
+                @include fade;
             }
 
             .book-button svg{

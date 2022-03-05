@@ -5,6 +5,7 @@
     height:80vh;
     @include flexCenterH;
     @include imageCenter;
+    @include fade;
     background-image:linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6), rgba(0,0,0,0.8)),url('../../images/1.jpeg') ;
     transition:background-image, 0.5s;
     background-attachment: fixed;
@@ -59,13 +60,14 @@
             position:relative;
             padding:10px 20px;
             @include flexCenterH;
+            @include fade;
             cursor: pointer;
 
             &:hover{
                 background-color:$primaryColor4;
             }
 
-            &:hover .book-button{
+            &:hover .version-button{
                 opacity:1;
             }
 
@@ -73,7 +75,7 @@
             .home-bible-version-box{
                 height:60%;
                 @include flexCenterV3;
-                .book-abbr{
+                .version-abbr{
                     color:$fc1;
                     font-size: $fsz3;
                     text-align:left;
@@ -87,7 +89,7 @@
                 }
             }
             
-            .book-button{
+            .version-button{
                 position:absolute;
                 top:0;
                 right:0;
@@ -97,6 +99,7 @@
                 border:none;
                 opacity:0;
                 cursor: pointer;
+                @include fade;
             }
         }
     }

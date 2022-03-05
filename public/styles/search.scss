@@ -45,6 +45,7 @@
                 color:rgb(184, 184, 184);
                 cursor: pointer;
                 @include flexCenterH;
+                @include fade;
                 &:hover{
                     color:white;
                 }

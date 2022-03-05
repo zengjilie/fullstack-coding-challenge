@@ -41,6 +41,7 @@
             @include flexCenterV;
             text-align: center;
             cursor: pointer;
+            @include fade;
 
             &:hover{
                 background-color: $primaryColor4 ;

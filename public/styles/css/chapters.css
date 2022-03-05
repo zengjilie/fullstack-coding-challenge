@@ -32,6 +32,9 @@
   margin-bottom: 20px;
   text-align: center;
   color: white;
+  transition: background-color, 0.2s;
+  transition: opacity, 0.2s;
+  transition: display, 0.2s;
 }
 .chapters .chapter-box .chapter:hover {
   background-color: #4a4a4a;

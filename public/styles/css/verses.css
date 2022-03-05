@@ -41,6 +41,9 @@
   justify-content: center;
   text-align: center;
   cursor: pointer;
+  transition: background-color, 0.2s;
+  transition: opacity, 0.2s;
+  transition: display, 0.2s;
 }
 .verses .verse-box .verse-button:hover {
   background-color: #4a4a4a;
