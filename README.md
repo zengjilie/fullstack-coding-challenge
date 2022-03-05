@@ -1,6 +1,6 @@
 # OH MY BIBLE
 
-Front End: JavaScript, HTML/CSS, SASS, BootStrap
+Front End: JavaScript, HTML/CSS, SASS
 
 Back End: NodeJS, ExpressJS, EJS
 

@@ -73,3 +73,27 @@ $fc3:rgb(104, 99, 99);
     margin-left:auto;
     margin-right:auto;
 }
+
+//breaker points
+@mixin breakPoint($point){
+
+    @if $point == desktop{
+
+    }
+    @else if $point == tablet{
+        @media screen and (max-width:800px){
+            
+            .home-bible-versions{
+                grid-template-columns: repeat(2, 1fr); 
+                gap:20px;
+            }
+        };
+    }@else if $point == mobile{
+        @media screen and (max-width:480px){
+            .home-bible-versions{
+                grid-template-columns: repeat(1, 1fr); 
+                gap:20px;
+            }
+        };
+    }
+}

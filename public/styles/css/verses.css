@@ -7,38 +7,24 @@
   margin-right: auto;
   position: relative;
 }
-
 .verses .breadcrumb {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   color: white;
 }
-
 .verses .breadcrumb a {
   color: #4a4a4a;
 }
-
 .verses .verse-title {
   font-size: 1.5rem;
   color: white;
   margin-bottom: 20px;
 }
-
 .verses .verse-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  align-items: center;
+  flex-wrap: wrap;
 }
-
 .verses .verse-box .verse-button {
   height: 50px;
   width: 50px;
@@ -49,27 +35,16 @@
   text-align: center;
   color: white;
   border: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   cursor: pointer;
 }
-
 .verses .verse-box .verse-button:hover {
   background-color: #4a4a4a;
 }
-
 .verses .single-verse {
   position: fixed;
   top: 0;
@@ -79,32 +54,25 @@
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.9);
 }
-
 .verses .single-verse .single-verse-box {
   max-width: 900px;
-  -webkit-transform: translateY(30vh);
-          transform: translateY(30vh);
+  transform: translateY(30vh);
   margin-left: auto;
   margin-right: auto;
 }
-
 .verses .single-verse .single-verse-box .single-verse-text {
   font-size: 1.5rem;
 }
-
 .verses .single-verse .single-verse-box .single-verse-ref {
   font-size: 1.2rem;
   text-align: right;
 }
-
 .verses .verse-content p {
   font-size: 1.5rem;
   color: white;
   margin-bottom: 20px;
 }
-
 .verses .verse-content .verse-text {
   font-size: 1rem;
   line-height: 2;
 }
-/*# sourceMappingURL=verses.css.map */

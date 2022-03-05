@@ -6,38 +6,24 @@
   margin-left: auto;
   margin-right: auto;
 }
-
 .chapters .breadcrumb {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   color: white;
 }
-
 .chapters .breadcrumb a {
   color: #4a4a4a;
 }
-
 .chapters .chapter-title {
   font-size: 1.5rem;
   color: white;
   margin-bottom: 20px;
 }
-
 .chapters .chapter-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  align-items: center;
+  flex-wrap: wrap;
 }
-
 .chapters .chapter-box .chapter {
   height: 50px;
   width: 50px;
@@ -47,8 +33,6 @@
   text-align: center;
   color: white;
 }
-
 .chapters .chapter-box .chapter:hover {
   background-color: #4a4a4a;
 }
-/*# sourceMappingURL=chapters.css.map */
