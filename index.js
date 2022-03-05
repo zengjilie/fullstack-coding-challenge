@@ -73,7 +73,6 @@ app.get('/:bibleId/chapters/:chapterId', async (req, res) => {
     const { bookId, number } = chapterContent;
     const totalVerses = response2?.data?.data;
     const bibleVersion = response3?.data?.data.abbreviation;
-    console.log(chapterContent);
 
     const paragraphs = [];
     chapterContent.content.forEach(e => {
@@ -95,10 +94,11 @@ app.get('/:bibleId/chapters/:chapterId', async (req, res) => {
 })
 
 app.get('/:bibleId/verses/:verseId', async (req, res) => {
-    const {bibleId, verseId} = req.params;
+    const { bibleId, verseId } = req.params;
     const response = await bible.get(`/${bibleId}/verses/${verseId}`);
-    
-    res.json({ data: 1 });
+    const verse = response?.data.data;
+    console.log(verse);
+    res.json(verse);
 })
 
 //port

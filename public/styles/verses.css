@@ -37,7 +37,7 @@
       flex-wrap: wrap;
 }
 
-.verses .verse-box .verse-number {
+.verses .verse-box .verse-button {
   height: 50px;
   width: 50px;
   background-color: #2d2d2d;
@@ -64,7 +64,7 @@
   cursor: pointer;
 }
 
-.verses .verse-box .verse-number:hover {
+.verses .verse-box .verse-button:hover {
   background-color: #4a4a4a;
 }
 
