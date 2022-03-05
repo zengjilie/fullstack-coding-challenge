@@ -54,18 +54,10 @@ $fc3:rgb(104, 99, 99);
 }
 
 //Image
-@mixin imageCenter($url){
+@mixin imageCenter{
     background-size:cover;
     background-repeat: no-repeat;
     background-position:center;
-    background-color: url($url);
-}
-
-@mixin imageCenterGradient($url){
-    background-size:cover;
-    background-repeat: no-repeat;
-    background-position:center;
-    background-image:linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url($url);
 }
 
 //Margin

@@ -28,18 +28,17 @@
     </style>
 </head>
 
-<body>
+<body onload="changeImage()">
     <!-- Header -->
     <%- include ('components/header.ejs');%>
 
         <!-- Image -->
-        <div class="home-image">
-
+        <div class="home-image" id='home-image'>
             <!-- Verse of the day -->
             <div class="home-verse">
                 <p>Verse of the Day</p>
                 <p class="home-verse-text">
-                    <% const text= verse.text.replace('</p>','') %>
+                    <% const text=verse.text.replace('</p>','') %>
                         <%= text %>
                 </p>
                 <p class="home-verse-chapter">
@@ -82,11 +81,14 @@
 </body>
 
 <script type="text/javascript">
-    const data = '<%- bbData %>'
-    const engBible = JSON.parse(data);
-    console.log(engBible);
+    //create images on page load
+    var image = document.getElementById('home-image');
 
-    // const bibleVersion = ${'.bible-version'}.
+    function changeImage() {
+        const random = new Date().getSeconds();
+        const index = random % 4 + 1;//
+        image.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6), rgba(0,0,0,0.8)),url('images/${index}.jpeg')`;
+    }
 </script>
 
 </html>

@@ -6,7 +6,8 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url("/images/lastsupper.jpeg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url("../../images/1.jpeg");
+  transition: background-image, 0.5s;
   background-attachment: fixed;
 }
 .home-image .home-verse {
