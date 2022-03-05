@@ -1,10 +1,10 @@
 # OH MY BIBLE
 
-Front End: JavaScript, HTML/CSS, SASS
+Front End: JavaScript, HTML/CSS, SASS, BootStrap
 
 Back End: NodeJS, ExpressJS, EJS
 
-Tesing: Jest
+Testing: Jest
 
 ## Reference
 https://docs.api.bible/tutorials/verse-of-the-day
