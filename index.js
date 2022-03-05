@@ -14,7 +14,6 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.static('public'));
 
-
 //Routes
 app.get('/', async (req, res) => {
     const response = await bible.get('')

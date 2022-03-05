@@ -23,6 +23,14 @@
         grid-template-columns: repeat(3, 1fr); 
         gap:20px;
 
+        @include md{
+            grid-template-columns: repeat(2, 1fr); 
+        };
+
+        @include sm{
+            grid-template-columns: repeat(1, 1fr); 
+        };
+
         .book-box{
             padding:10px;
             @include flexCenterH2;

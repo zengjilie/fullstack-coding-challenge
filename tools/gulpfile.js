@@ -9,4 +9,3 @@ const buildStyles = () => {
 }
 
 module.exports = buildStyles;
-

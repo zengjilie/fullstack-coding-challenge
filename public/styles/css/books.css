@@ -20,6 +20,16 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
+@media (max-width: 720px) {
+  .books .book {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .books .book {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 .books .book .book-box {
   padding: 10px;
   display: flex;

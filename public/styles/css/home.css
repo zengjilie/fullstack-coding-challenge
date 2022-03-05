@@ -43,10 +43,14 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
-@media screen and (max-width: 800px) {
-  .home-bible-box .home-bible-versions .home-bible-versions {
+@media (max-width: 720px) {
+  .home-bible-box .home-bible-versions {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .home-bible-box .home-bible-versions {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 .home-bible-box .home-bible-versions .home-bible-version {

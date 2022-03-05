@@ -43,7 +43,13 @@
         grid-template-columns: repeat(3, 1fr); 
         gap:20px;
 
-        @include breakPoint(tablet);
+        @include md{
+            grid-template-columns: repeat(2, 1fr); 
+        };
+
+        @include sm{
+            grid-template-columns: repeat(1, 1fr); 
+        };
 
         .home-bible-version{
             height:200px;
