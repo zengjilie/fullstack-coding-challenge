@@ -19,10 +19,31 @@
         align-items: center;
         @include marginCenter;
         @include flexCenterH2;
+
         .header-title{
             font-size:1.5rem;
             color: $primaryColor;
         }
+
+        .header-form{
+            margin:0;
+
+            .header-input{
+                background-color:black;
+                color:white;
+                height:40px;
+                width:100px;
+                border:none;
+                padding:0 10px;
+                caret-color:white;
+                transition: width 0.3s;
+                &:focus{
+                    outline:none;
+                    width:300px;
+                }
+            }
+        }
+
     }
 }
 

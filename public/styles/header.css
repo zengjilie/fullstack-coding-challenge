@@ -33,4 +33,25 @@
   font-size: 1.5rem;
   color: white;
 }
+
+.header .header-container .header-form {
+  margin: 0;
+}
+
+.header .header-container .header-form .header-input {
+  background-color: black;
+  color: white;
+  height: 40px;
+  width: 100px;
+  border: none;
+  padding: 0 10px;
+  caret-color: white;
+  -webkit-transition: width 0.3s;
+  transition: width 0.3s;
+}
+
+.header .header-container .header-form .header-input:focus {
+  outline: none;
+  width: 300px;
+}
 /*# sourceMappingURL=header.css.map */

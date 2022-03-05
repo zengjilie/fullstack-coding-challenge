@@ -34,6 +34,7 @@ app.get('/', async (req, res) => {
 
     //=== VerseOfDay===
     const verse = await getVerse();
+    console.log(verse);
     res.render('home', { bbData: JSON.stringify(engBible), verse: verse[0] });
 });
 
@@ -103,6 +104,17 @@ app.get('/:bibleId/verses/:verseId', async (req, res) => {
     const verse = response?.data.data;
     // console.log(verse);
     res.json(verse);
+})
+
+app.get('/:bibleId/search', async (req, res) => {
+    const { query } = req.query;
+    const { bibleId } = req.params;
+    console.log(bibleId);
+    const response = await bible.get(`/${bibleId}/search?query=${query}&sort=relevance`);
+    const results = response?.data?.data;
+
+    res.render('search', { results });
+
 })
 
 //port
