@@ -31,7 +31,6 @@ app.get('/', async (req, res) => {
             return true;
         }
     });
-
     //=== VerseOfDay ===
 
     let verse = await getVerse();
