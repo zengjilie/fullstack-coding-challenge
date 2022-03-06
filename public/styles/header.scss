@@ -21,14 +21,16 @@
         @include flexCenterH2;
 
         .header-title{
-            font-size:1.5rem;
+            font-size:$fsz4;
             color: $primaryColor;
+            font-family: $ff;
         }
 
         .header-form{
             margin:0;
 
             .header-input{
+                font-family: $ff2;
                 background-color:black;
                 color:white;
                 height:40px;

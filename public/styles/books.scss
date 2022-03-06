@@ -1,4 +1,6 @@
 @import "./variables";
+@import "./header";
+@import "./footer";
 
 .books{
     margin-top:100px;
@@ -9,10 +11,12 @@
 
     .breadcrumb{
         color:$primaryColor;
+        font-family:$ff2;
     }
 
     .book-title{
         font-size: $fsz3;
+        font-family:$ff;
         color:$primaryColor;
         margin-bottom: 20px;
     }
@@ -48,6 +52,7 @@
 
             .book-name{
                 color:$primaryColor;
+                font-family:$ff2;
             }
 
             .book-button{

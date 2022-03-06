@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@300;500;800;900&family=Raleway:wght@200;300;500;700&display=swap');
 //Global width
 $globalWidth:900px;
 
@@ -11,11 +12,24 @@ $primaryColor4:rgb(74,74,74);
 $accentColor: blue;
 
 //Font system
-$fst:'times';
+
+//Font Family
+$ff:'Noto Serif Display',serif;
+$ff2:'Raleway',sans-serif;
+$ff3:'Aral',sans-serif;
+
+//Font Weight
+$fw1:300;
+$fw2:500;
+$fw3:800;
+
+//Font Size
 $fsz1:1rem;
 $fsz2:1.2rem;
-$fsz3:1.5rem;
+$fsz3:1.4rem;
+$fsz4:1.8rem;
 
+//Font Color
 $fc1:white;
 $fc2:rgb(171, 164, 164);
 $fc3:rgb(104, 99, 99);

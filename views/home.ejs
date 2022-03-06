@@ -7,7 +7,6 @@
     <title>OH MY BIBLE</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/styles/css/home.css">
-    <link rel="stylesheet" href="/styles/css/header.css">
 
     <style>
         body {
@@ -36,9 +35,10 @@
     <div class="home-image" id='home-image'>
         <!-- Verse of the day -->
         <div class="home-verse">
-            <p>Verse of the Day</p>
+            <p class="home-verse-title">Verse of the Day</p>
             <p class="home-verse-text">
-                <% const text=verse.text.replace('</p>','') %>
+                <!-- < const text=verse.text.replace('</p>','') %> -->
+                <% const text = verse.text %>
                 <%= text %>
             </p>
             <p class="home-verse-chapter">
@@ -78,6 +78,9 @@
             <%}) %>
         </div>
     </div>
+
+    <!-- footer -->
+    <%- include ('components/footer.ejs') %>
 </body>
 
 <script type="text/javascript">
@@ -86,7 +89,7 @@
 
     function changeImage() {
         const random = new Date().getSeconds();
-        const index = random % 4 + 1;//
+        const index = random % 10 + 1;//
         image.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6), rgba(0,0,0,0.8)),url('images/${index}.jpeg')`;
     }
 </script>

@@ -1,4 +1,6 @@
 @import "./variables";
+@import "./header";
+@import "./footer";
 
 .home-image{
     width:100%;    
@@ -16,14 +18,23 @@
         padding: 0 20px;
     }
 
+    .home-verse-title{
+        font-size:$fsz4;
+        font-family: $ff;
+        font-weight: $fw2;
+    }
     .home-verse-text{
-        font-size: $fsz3;
+        font-size: $fsz2;
         line-height:1.5;
+        font-family: $ff;
+        font-weight: $fw2;
     }
 
     .home-verse-chapter{
         font-size: $fsz1;
         text-align: right;
+        font-family: $ff;
+        font-weight: $fw2;
     }
 }
 
@@ -31,13 +42,13 @@
     margin-top:20px;
     padding:0 20px;
     max-width:$globalWidth;
-    margin-bottom:40px;
     @include marginCenter;
 
     .home-bible-title{
         font-size: $fsz3;
         color:$primaryColor;
         margin-bottom: 20px;
+        font-family:$ff;
     }
 
 
@@ -78,12 +89,15 @@
                 .version-abbr{
                     color:$fc1;
                     font-size: $fsz3;
+                    font-family:$ff;
                     text-align:left;
                     margin-top: 0;
                     margin-bottom:30px;
                 }
 
                 .version-name{
+                    font-family: $ff2;
+                    font-weight:$fw2;
                     color:$fc1;
                     text-align:left;
                 }

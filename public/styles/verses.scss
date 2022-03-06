@@ -1,4 +1,6 @@
 @import "./variables";
+@import "./header";
+@import "./footer";
 
 .verses{
     margin-top:100px;
@@ -11,6 +13,7 @@
     .breadcrumb{
         @include flexCenterH;
         color:$primaryColor;
+        font-family:$ff2;
 
         a{
             color:$primaryColor4;
@@ -18,6 +21,7 @@
     }
 
     .verse-title{
+        font-family:$ff;
         font-size: $fsz3;
         color:$primaryColor;
         margin-bottom: 20px;
@@ -29,6 +33,8 @@
 
 
         .verse-button{
+            font-family:$ff2;
+            font-size: $fsz1;
             height:50px;
             width:50px;
             background-color:$primaryColor3 ;
@@ -65,10 +71,12 @@
 
             .single-verse-text{
                 font-size: $fsz3;
+                font-family:$ff2;
             }
 
             .single-verse-ref{
                 font-size: $fsz2;
+                font-family:$ff2;
                 text-align:right;
             }
         }
@@ -77,12 +85,15 @@
     .verse-content{
         p{
             font-size: $fsz3;
+            font-family:$ff2;
             color:$primaryColor;
             margin-bottom: 20px;
         }  
 
         .verse-text{
             font-size: $fsz1;
+            font-family:$ff3;
+            font-weight:$fw1;
             line-height: 2;
         }
     }

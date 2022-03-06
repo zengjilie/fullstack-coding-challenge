@@ -1,4 +1,6 @@
-@import "./variables";
+@import './variables';
+@import './footer';
+@import './header';
 
 .search{
     margin-top:100px;
@@ -10,12 +12,14 @@
     .search-query{
         color:$primaryColor;
         font-size: $fsz3;
+        font-family:$ff;
         margin-bottom:20px;
     }
 
     .search-number{
         color:$primaryColor;
         font-size: $fsz1;
+        font-family:$ff2;
         margin-bottom:20px;
     }
 
@@ -33,16 +37,21 @@
             @include fade;
             .search-title{
                 font-size: $fsz3;
+                font-family:$ff2;
                 margin-bottom: 20px;
             }
             .search-text{
-                font-size: $fsz2;
+                font-size: $fsz1;
+                font-family:$ff3;
+                font-weight:$fw1;
                 color:rgb(184, 184, 184);
                 margin-bottom: 20px;
             }
 
             .search-button{
                 font-size: $fsz1;
+                font-family:$ff2;
+                font-weight:$fw2;
                 color:rgb(184, 184, 184);
                 cursor: pointer;
                 @include flexCenterH;
@@ -61,8 +70,10 @@
     .search-page-buttons{
         @include flexCenterH;
         .search-page-button{
-            width:120px;
-            padding:10px 0;
+            font-family:$ff2;
+            font-size: $fsz1;
+            width:130px;
+            padding:15px 0;
             margin-right: 20px;
             border:0.1px  $primaryColor4 solid ;
             border-radius: 0.2rem;

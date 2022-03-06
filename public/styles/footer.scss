@@ -1,0 +1,12 @@
+@import "./variables";
+
+.footer{
+    height:50px;
+    width: 100%;
+    margin: 50px 0;
+    font-family:$ff2;
+    @include flexCenterV;
+    .footer-text{
+        color:$fc3;
+    }
+}

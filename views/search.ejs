@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OH MY BIBLE</title>
-    <link rel="stylesheet" href="/styles/css/header.css">
     <link rel="stylesheet" href="/styles/css/search.css">
     <style>
         body {
@@ -64,6 +63,9 @@
         </div>
     </div>
 
+    <!-- Footer -->
+    <%- include ('components/footer.ejs');%>
+
     <script>
         //header search bar
         //header element
@@ -93,13 +95,11 @@
         //Pagination
         const temp = '<%- JSON.stringify(results) %>';
         const list = JSON.parse(temp).verses;
-        console.log(list);
 
         const resultsPerPage = 10;
-        const totalPages = Math.floor(list.length / 10);
-        console.log(totalPages);
+        const totalPages = list.length % 10 > 0 ? Math.floor(list.length / 10) + 1 : list.length / 10;
 
-        //DOM
+        //Render List
         let index = 1;
         function getList(dir) {
 
@@ -113,7 +113,6 @@
             while (searchBox.firstChild) {
                 searchBox.removeChild(searchBox.firstChild);
             }
-            console.log('index', index);
 
             //1. render currentList
             //loop            
@@ -122,7 +121,7 @@
             if (list.length <= 10) {
                 currentList = list;
             } else {
-                currentList = list.slice(index - 1, index + resultsPerPage - 1);
+                currentList = list.slice((index - 1) * resultsPerPage, index * resultsPerPage);
             }
 
             currentList.forEach(e => {
