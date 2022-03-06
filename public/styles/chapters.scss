@@ -6,7 +6,6 @@
     max-width:$globalWidth;
     margin-bottom: 40px;
     @include marginCenter;
-
     .breadcrumb{
         @include flexCenterH;
         color:$primaryColor;

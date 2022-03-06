@@ -54,3 +54,20 @@
 .search .search-box .search-content .search-button svg {
   margin-left: 10px;
 }
+.search .search-page-buttons {
+  display: flex;
+  align-items: center;
+}
+.search .search-page-buttons .search-page-button {
+  width: 120px;
+  padding: 10px 0;
+  margin-right: 20px;
+  border: 0.1px #4a4a4a solid;
+  border-radius: 0.2rem;
+  background-color: #191919;
+  color: #686363;
+  cursor: pointer;
+}
+.search .search-page-buttons .active {
+  color: white;
+}

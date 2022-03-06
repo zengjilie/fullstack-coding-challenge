@@ -58,4 +58,21 @@
             }
         }
     }
+    .search-page-buttons{
+        @include flexCenterH;
+        .search-page-button{
+            width:120px;
+            padding:10px 0;
+            margin-right: 20px;
+            border:0.1px  $primaryColor4 solid ;
+            border-radius: 0.2rem;
+            background-color:rgb(25,25,25);
+            color: $fc3;
+            cursor: pointer;
+        }
+
+        .active{
+            color:white;
+        }
+    }
 }

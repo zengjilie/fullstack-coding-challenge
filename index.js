@@ -101,18 +101,18 @@ app.get('/:bibleId/chapters/:chapterId', async (req, res) => {
 
 app.get('/:bibleId/verses/:verseId', async (req, res) => {
     const { bibleId, verseId } = req.params;
-    const response = await bible.get(`/${bibleId}/verses/${verseId}`);
     const verse = response?.data.data;
-    // console.log(verse);
+    const response = await bible.get(`/${bibleId}/verses/${verseId}`);
     res.json(verse);
+    // console.log(verse);
 })
 
 app.get('/:bibleId/search', async (req, res) => {
     const { query } = req.query;
     const { bibleId } = req.params;
-    console.log(bibleId);
     const response = await bible.get(`/${bibleId}/search?query=${query}&limit=100&sort=relevance`);
     const results = response?.data?.data;
+    // console.log(results);
     // res.json(results);
     res.render('search', { results, bibleId });
 })

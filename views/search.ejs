@@ -38,13 +38,14 @@
 <body>
     <!-- Header -->
     <%- include ('components/header.ejs');%>
+
     <div class="search">
 
         <p class="search-query">
             Results for "<%= results.query %>"
         </p>
 
-        <p class="search-number" id="search-id">
+        <p class="search-number" id="search-number">
 
         </p>
 
@@ -53,60 +54,75 @@
 
         </div>
 
+        <div class="search-page-buttons">
+            <button id="search-pre-button" class="search-page-button" onclick="getList('pre')">
+                Previous Page
+            </button>
+            <button id="search-next-button" class="search-page-button" onclick="getList('next')">
+                Next Page
+            </button>
+        </div>
     </div>
 
     <script>
-        //query results next / pre page
+        //header search bar
+        //header element
+        const temp2 = '<%- JSON.stringify(bibleId) %>';
+        const bibleId = JSON.parse(temp2);
+
+        let header = document.getElementsByClassName('header-container')[0];
+
+        const headerForm = document.createElement('form');
+        headerForm.action = `/${bibleId}/search`;
+        headerForm.method = 'GET';
+        headerForm.className = 'header-form';
+        headerForm.onsubmit = 'handleSubmit';
+
+        //input element
+        const headerInput = document.createElement('input');
+        headerInput.type = 'text';
+        headerInput.className = 'header-input';
+        headerInput.placeholder = 'Search...';
+        headerInput.name = 'query';
+
+        headerForm.appendChild(headerInput);
+        header.appendChild(headerForm);
+
+
+
+        //Pagination
         const temp = '<%- JSON.stringify(results) %>';
         const list = JSON.parse(temp).verses;
         console.log(list);
 
-        //Pagination
         const resultsPerPage = 10;
-        const totalPages = Math.floor(list.length / 10) + 1;
+        const totalPages = Math.floor(list.length / 10);
         console.log(totalPages);
 
         //DOM
-        const index = 0;
-        getList(index);
-        function getList(index) {
-            //2. set button 
-            //3. set text
-        // <p class="search-number">
+        let index = 1;
+        function getList(dir) {
 
-        // </p>
-            const searchNumer = document.getElementById('search-id');
-            //1. render currentList
+            if (dir === 'next') {
+                index++;
+            } else if (dir === 'pre') {
+                index--;
+            }
+
             const searchBox = document.getElementById('search-box');
-            //header element
-            const temp2 = '<%- JSON.stringify(bibleId) %>';
-            const bibleId = JSON.parse(temp2);
+            while (searchBox.firstChild) {
+                searchBox.removeChild(searchBox.firstChild);
+            }
+            console.log('index', index);
 
-            let header = document.getElementsByClassName('header-container')[0];
-
-            const headerForm = document.createElement('form');
-            headerForm.action = `/${bibleId}/search`;
-            headerForm.method = 'GET';
-            headerForm.className = 'header-form';
-            headerForm.onsubmit = 'handleSubmit';
-
-            //input element
-            const headerInput = document.createElement('input');
-            headerInput.type = 'text';
-            headerInput.className = 'header-input';
-            headerInput.placeholder = 'Search...';
-            headerInput.name = 'query';
-
-            headerForm.appendChild(headerInput);
-            header.appendChild(headerForm);
-
+            //1. render currentList
             //loop            
             let currentList;
 
             if (list.length <= 10) {
                 currentList = list;
             } else {
-                currentList = list.slice(index, index + resultsPerPage);
+                currentList = list.slice(index - 1, index + resultsPerPage - 1);
             }
 
             currentList.forEach(e => {
@@ -150,8 +166,45 @@
 
                 searchBox.appendChild(searchContent);
             })
+            //2. set text 
+            const searchNumber = document.getElementById('search-number');
+            if (list.length <= 10) {
+                searchNumber.innerHTML = `Showing ${currentList.length} of ${list.length} results`;
+            } else {
+                searchNumber.innerHTML = `Showing ${(index - 1) * resultsPerPage + 1} - ${(index - 1) * resultsPerPage + currentList.length} of ${list.length} results`;
+            }
 
+
+            //3. set button 
+            const searchPreBtn = document.getElementById('search-pre-button');
+            const searchNextBtn = document.getElementById('search-next-button');
+
+            if (list.length <= 10) {
+                searchPreBtn.className = 'search-page-button';
+                searchPreBtn.disabled = true;
+                searchNextBtn.className = 'search-page-button';
+                searchNextBtn.disabled = true;
+            } else {
+                if (index == 1) {
+                    searchPreBtn.className = 'search-page-button';
+                    searchPreBtn.disabled = true;
+                } else {
+                    searchPreBtn.className = 'search-page-button active';
+                    searchPreBtn.disabled = false;
+                }
+
+                if (index == totalPages) {
+                    searchNextBtn.className = 'search-page-button';
+                    searchNextBtn.disabled = true;
+                } else {
+                    searchNextBtn.className = 'search-page-button active';
+                    searchNextBtn.disabled = false;
+                }
+            }
         }
+
+        //default;
+        getList('default');
     </script>
 </body>
 
