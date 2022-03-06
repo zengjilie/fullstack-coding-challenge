@@ -1,10 +1,10 @@
 const express = require('express');
-const bible = require('./tools/bible.js');
-const getVerse = require('./tools/verseGenerator.js');
+const bible = require('../tools/bible.js');
+const getVerse = require('../tools/verseGenerator.js');
 const axios = require('axios');
 const { resolveInclude } = require('ejs');
 const app = express();
-const buildStyles = require('./tools/gulpfile.js');
+const buildStyles = require('../tools/gulpfile.js');
 
 buildStyles();
 //Set View Engine
@@ -36,11 +36,10 @@ app.get('/', async (req, res) => {
     //=== VerseOfDay ===
 
     let verse = await getVerse();
-    console.log(verse);
     const text = (verse[0].text.replace('</p>', '')); // remove </p> in text string
     verse[0].text = text;
 
-    res.render('home', { bibles: engBible, verse: verse[0] });
+    res.send({ bibles: engBible, verse: verse[0] });
 });
 
 
@@ -49,11 +48,11 @@ app.get('/:bibleId', async (req, res) => {
     const response2 = await bible.get(`/${req.params.bibleId}`);
 
     const books = response?.data?.data;//array
-    const version = response2?.data?.data;//string
+    const version = response2?.data?.data;
 
     // console.log(books);
 
-    res.render('books', { books, version });
+    res.send({ books, version });
 })
 
 app.get('/:bibleId/books/:bookId', async (req, res) => {
@@ -66,7 +65,7 @@ app.get('/:bibleId/books/:bookId', async (req, res) => {
 
     // console.log(chapters);
 
-    res.render('chapters', { chapters, version: bibleVersion, bookId });
+    res.send({ chapters, version: bibleVersion, bookId });
 })
 
 app.get('/:bibleId/chapters/:chapterId', async (req, res) => {
@@ -101,7 +100,7 @@ app.get('/:bibleId/chapters/:chapterId', async (req, res) => {
 
     // console.log(singleVerses);
     // res.json(totalVerses);
-    res.render('verses', { paragraphs, totalVerses, version: bibleVersion, bookId, number, singleVerses });
+    res.send({ paragraphs, totalVerses, version: bibleVersion, bookId, number, singleVerses });
 })
 
 app.get('/:bibleId/verses/:verseId', async (req, res) => {
@@ -115,20 +114,11 @@ app.get('/:bibleId/verses/:verseId', async (req, res) => {
 app.get('/:bibleId/search', async (req, res) => {
     const { query } = req.query;
     const { bibleId } = req.params;
-    try {
-        const response = await bible.get(`/${bibleId}/search?query=${query}&limit=100&sort=relevance`);
-        const results = response?.data?.data;
-        res.render('search', { results, bibleId });
-    } catch (err) {
-        res.render('search',{ bibleId });
-    }
+    const response = await bible.get(`/${bibleId}/search?query=${query}&limit=100&sort=relevance`);
+    const results = response?.data?.data;
     // console.log(results);
     // res.json(results);
+    res.send({ results, bibleId });
 })
 
-//port
-const PORT = process.env.port || 5000;
-
-app.listen(PORT, () => {
-    console.log('Listening to port 5000')
-});
+module.exports = app;

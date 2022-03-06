@@ -54,7 +54,8 @@
         <div class="home-bible-title"> Select a Bible </div>
 
         <div class="home-bible-versions">
-            <% const engBible=JSON.parse(bbData) %>
+            <% const temp = JSON.stringify(bibles) %> 
+            <% const engBible=JSON.parse(temp) %>
             <% engBible.forEach(e=> { %>
 
             <!-- version -->
