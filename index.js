@@ -6,7 +6,7 @@ const { resolveInclude } = require('ejs');
 const app = express();
 const buildStyles = require('./tools/gulpfile.js');
 
-buildStyles();
+// buildStyles();// comment this line if not in dev environment
 //Set View Engine
 app.set('view engine', 'ejs');
 
