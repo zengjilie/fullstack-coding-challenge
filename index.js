@@ -33,12 +33,13 @@ app.get('/', async (req, res) => {
         }
     });
 
-    //=== VerseOfDay===
+    //=== VerseOfDay ===
+
     let verse = await getVerse();
-    const text = (verse[0].text.replace('</p>', ''));
+    console.log(verse);
+    const text = (verse[0].text.replace('</p>', '')); // remove </p> in text string
     verse[0].text = text;
 
-    // res.json(verse);
     res.render('home', { bbData: JSON.stringify(engBible), verse: verse[0] });
 });
 
@@ -82,6 +83,7 @@ app.get('/:bibleId/chapters/:chapterId', async (req, res) => {
     const paragraphs = [];//verses organized by paragraph
     const singleVerses = [];//single verses
 
+    //Concatenate verse to paragraph
     chapterContent.content.forEach(e => {
         let curPara = '';
         e.items.forEach(entry => {
@@ -126,3 +128,5 @@ const PORT = process.env.port || 5000;
 app.listen(PORT, () => {
     console.log('Listening to port 5000')
 });
+
+module.exports = app;
