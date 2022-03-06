@@ -36,101 +36,101 @@
     <!-- Header -->
     <%- include ('components/header.ejs');%>
 
-        <div class="verses">
+    <div class="verses">
 
-            <ul class="breadcrumb">
-                <li>
-                    <a href="/<%= totalVerses[0].bibleId%>">
-                        / <%= version%>
-                    </a>
-                </li>
+        <ul class="breadcrumb">
+            <li>
+                <a href="/<%= totalVerses[0].bibleId%>">
+                    / <%= version%>
+                </a>
+            </li>
 
-                <li>
-                    <a href="/<%= totalVerses[0].bibleId%>/books/<%= bookId %> ">
-                        &nbsp;/ <%= bookId %>
-                    </a>
-                </li>
+            <li>
+                <a href="/<%= totalVerses[0].bibleId%>/books/<%= bookId %> ">
+                    &nbsp;/ <%= bookId %>
+                </a>
+            </li>
 
-                <li>
-                    &nbsp;/ <%= number %>
-                </li>
-            </ul>
+            <li>
+                &nbsp;/ <%= number %>
+            </li>
+        </ul>
 
-            <div class="verse-title"> Select a Verse</div>
+        <div class="verse-title"> Select a Verse</div>
 
-            <!-- verses -->
-            <div class="verse-box">
-                <% totalVerses.forEach((e,index)=>{ %>
-                    <!-- verse component -->
-                    <button class="verse-button" onclick="popVerse('<%= index+1 %>')">
-                        <%= index + 1%>
-                    </button>
-                    <% }) %>
-            </div>
-
-            <!-- single verse -->
+        <!-- verses -->
+        <div class="verse-box">
             <% totalVerses.forEach((e,index)=>{ %>
-                <div class="single-verse" id="single-verse-<%= index+1 %>" style="display:none"
-                    onclick="popVerse('<%= index+1 %>')">
-                    <div class="single-verse-box">
-                        <p class="single-verse-text">
-                            <%= index+1 %>
-                                <%= singleVerses[index] %>
-                        </p>
-                        <p class="single-verse-ref">
-                            <%= e.reference %>
-                        </p>
-                    </div>
-                </div>
-                <% })%>
+            <!-- verse component -->
+            <button class="verse-button" onclick="popVerse('<%= index+1 %>')">
+                <%= index + 1%>
+            </button>
+            <% }) %>
+        </div>
 
-                    <!-- verse content -->
-                    <div class="verse-content">
-                        <p>Read Paragraph</p>
-                        <% paragraphs.forEach(e=>{ %>
-                            <p class="verse-text">
-                                &nbsp;&nbsp;&nbsp;&nbsp;<%= e %>
-                            </p>
-                            <% }) %>
-                    </div>
+        <!-- single verse -->
+        <% totalVerses.forEach((e,index)=>{ %>
+        <div class="single-verse" id="single-verse-<%= index+1 %>" style="display:none"
+            onclick="popVerse('<%= index+1 %>')">
+            <div class="single-verse-box">
+                <p class="single-verse-text">
+                    <%= index+1 %>
+                    <%= singleVerses[index] %>
+                </p>
+                <p class="single-verse-ref">
+                    <%= e.reference %>
+                </p>
+            </div>
+        </div>
+        <% })%>
 
-                    <script>
-                        const tv = '<%- JSON.stringify(totalVerses) %>';
-                        const totalVerses = JSON.parse(tv);//
+        <!-- verse content -->
+        <div class="verse-content">
+            <p>Read Paragraph</p>
+            <% paragraphs.forEach(e=>{ %>
+            <p class="verse-text">
+                &nbsp;&nbsp;&nbsp;&nbsp;<%= e %>
+            </p>
+            <% }) %>
+        </div>
 
-                        function popVerse(verseIndex) {
-                            // console.log(verseIndex);
-                            const singleVerse = document.getElementById(`single-verse-${verseIndex}`);
-                            if (singleVerse.style.display === 'none') {
-                                singleVerse.style.display = 'block';
-                            } else {
-                                singleVerse.style.display = 'none';
-                            }
-                        }
+        <script>
+            const tv = '<%- JSON.stringify(totalVerses) %>';
+            const totalVerses = JSON.parse(tv);//
 
-                        const bibleId = totalVerses[0].bibleId;
+            function popVerse(verseIndex) {
+                // console.log(verseIndex);
+                const singleVerse = document.getElementById(`single-verse-${verseIndex}`);
+                if (singleVerse.style.display === 'none') {
+                    singleVerse.style.display = 'block';
+                } else {
+                    singleVerse.style.display = 'none';
+                }
+            }
 
-                        let header = document.getElementsByClassName('header-container')[0];
+            const bibleId = totalVerses[0].bibleId;
 
-                        //header element
-                        const headerForm = document.createElement('form');
-                        headerForm.action = `/${bibleId}/search`;
-                        headerForm.method = 'GET';
-                        headerForm.className = 'header-form';
-                        headerForm.onsubmit = 'handleSubmit';
+            let header = document.getElementsByClassName('header-container')[0];
 
-                        //input element
-                        const headerInput = document.createElement('input');
-                        headerInput.type = 'text';
-                        headerInput.className = 'header-input';
-                        headerInput.placeholder = 'Search...';
-                        headerInput.name = 'query';
+            //header element
+            const headerForm = document.createElement('form');
+            headerForm.action = `/${bibleId}/search`;
+            headerForm.method = 'GET';
+            headerForm.className = 'header-form';
+            headerForm.onsubmit = 'handleSubmit';
 
-                        headerForm.appendChild(headerInput);
-                        header.appendChild(headerForm);
+            //input element
+            const headerInput = document.createElement('input');
+            headerInput.type = 'text';
+            headerInput.className = 'header-input';
+            headerInput.placeholder = 'Search...';
+            headerInput.name = 'query';
+
+            headerForm.appendChild(headerInput);
+            header.appendChild(headerForm);
 
 
-                    </script>
+        </script>
 </body>
 
 </html>

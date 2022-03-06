@@ -38,65 +38,46 @@
 <body>
     <!-- Header -->
     <%- include ('components/header.ejs');%>
-        <div class="search">
+    <div class="search">
 
-            <p class="search-query">
-                Results for "<%= results.query %>"
-            </p>
+        <p class="search-query">
+            Results for "<%= results.query %>"
+        </p>
 
-            <p class="search-number">
-                showing
-                <% if(results.total <=10){ %>
-                    <strong>
-                        <%= results.total %>
-                    </strong> of <strong>10</strong> results
-                    <% }else{ %>
-                        <strong>10</strong> of <strong>
-                            <%= results.total %>
-                        </strong> results
-                        <% } %>
-            </p>
+        <p class="search-number" id="search-id">
+
+        </p>
 
 
-            <div class="search-box">
-                <% results.verses.slice(start,end).forEach(e=> { %>
-                    <div class="search-content">
-                        <p class="search-title">
-                            <strong>
-                                <%= e.reference %>
-                            </strong>
-                        </p>
-                        <p class="search-text">
-                            <%= e.text%>
-                        </p>
-                        <a class="search-button" href="/<%= bibleId %>/chapters/<%= e.chapterId %>">VIEW CHAPTER 
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-arrow-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                            </svg>
-                        </a>
-                    </div>
-                    <% }) %>
-            </div>
+        <div class="search-box" id="search-box">
 
         </div>
 
-        <script>
-            //query results next / pre page
-            const temp = '<%- JSON.stringify(results) %>';
-            const results = JSON.parse(temp).verses;
-            console.log(results);
+    </div>
 
-            const search = document.getElementById('search-box');
-            if(results.length > 10){ // has next page
+    <script>
+        //query results next / pre page
+        const temp = '<%- JSON.stringify(results) %>';
+        const list = JSON.parse(temp).verses;
+        console.log(list);
 
-            }else{ // doesn't have next page
-                results.foreach(e =>{
-                    const singleResult = document.createElement('div');
-                    singleResult.className('search-content');
-                })
-            }
+        //Pagination
+        const resultsPerPage = 10;
+        const totalPages = Math.floor(list.length / 10) + 1;
+        console.log(totalPages);
+
+        //DOM
+        const index = 0;
+        getList(index);
+        function getList(index) {
+            //2. set button 
+            //3. set text
+        // <p class="search-number">
+
+        // </p>
+            const searchNumer = document.getElementById('search-id');
+            //1. render currentList
+            const searchBox = document.getElementById('search-box');
             //header element
             const temp2 = '<%- JSON.stringify(bibleId) %>';
             const bibleId = JSON.parse(temp2);
@@ -119,7 +100,59 @@
             headerForm.appendChild(headerInput);
             header.appendChild(headerForm);
 
-        </script>
+            //loop            
+            let currentList;
+
+            if (list.length <= 10) {
+                currentList = list;
+            } else {
+                currentList = list.slice(index, index + resultsPerPage);
+            }
+
+            currentList.forEach(e => {
+                //Create element
+                const searchContent = document.createElement('div');
+                const searchTitle = document.createElement('p');
+                const searchText = document.createElement('p');
+                const searchButton = document.createElement('a');
+                const searchSVG = document.createElementNS("http://www.w3.org/2000/svg", 'svg');
+                const searchPath = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+
+                //Add className
+                searchContent.className = 'search-content';
+                searchTitle.className = 'search-title';
+                searchText.className = 'search-text';
+                searchButton.className = 'search-button';
+
+                //innerhtml
+                searchTitle.innerHTML = e.reference;
+                searchText.innerHTML = e.text;
+                searchButton.innerHTML = 'VIEW CHAPTER';
+                searchButton.href = `/${bibleId}/chapters/${e.chapterId}`;
+
+                //SVG
+                searchSVG.setAttributeNS(null, 'fill', 'currentColor');
+                searchSVG.setAttributeNS(null, 'width', '20');
+                searchSVG.setAttributeNS(null, 'height', '20');
+                searchSVG.setAttributeNS(null, 'viewBox', '0 0 16 16');
+
+                //Path
+                searchPath.setAttributeNS(null, 'full-rule', 'evenodd');
+                searchPath.setAttributeNS(null, 'd', 'M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z');
+
+                //combine
+                searchSVG.appendChild(searchPath);
+                searchButton.appendChild(searchSVG);
+
+                searchContent.appendChild(searchTitle);
+                searchContent.appendChild(searchText);
+                searchContent.appendChild(searchButton);
+
+                searchBox.appendChild(searchContent);
+            })
+
+        }
+    </script>
 </body>
 
 </html>

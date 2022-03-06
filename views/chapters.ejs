@@ -35,61 +35,61 @@
     <!-- Header -->
     <%- include ('components/header.ejs'); %>
 
-        <div class="chapters">
+    <div class="chapters">
 
-            <ul class="breadcrumb">
-                <li>
-                    <a href="/<%= chapters[0].bibleId%>">
-                        / <%= version %>
-                    </a>
-                </li>
+        <ul class="breadcrumb">
+            <li>
+                <a href="/<%= chapters[0].bibleId%>">
+                    / <%= version %>
+                </a>
+            </li>
 
-                <li>
-                    &nbsp;/ <%= bookId %>
-                </li>
+            <li>
+                &nbsp;/ <%= bookId %>
+            </li>
 
-            </ul>
+        </ul>
 
-            <div class="chapter-title"> Select a Chapter</div>
+        <div class="chapter-title"> Select a Chapter</div>
 
-            <!-- Chapters -->
-            <div class="chapter-box">
-                <% chapters.forEach(e=>{ %>
-                    <!-- Chapter component -->
-                    <a class="chapter" href="/<%= chapters[0].bibleId%>/chapters/<%= e.id %>  ">
-                        <p class="chapter-number">
-                            <%= e.number %>
-                        </p>
-                    </a>
-                    <% }) %>
-            </div>
+        <!-- Chapters -->
+        <div class="chapter-box">
+            <% chapters.forEach(e=>{ %>
+            <!-- Chapter component -->
+            <a class="chapter" href="/<%= chapters[0].bibleId%>/chapters/<%= e.id %>  ">
+                <p class="chapter-number">
+                    <%= e.number %>
+                </p>
+            </a>
+            <% }) %>
         </div>
+    </div>
 
-        <script>
-            const temp = '<%- JSON.stringify(chapters) %>';
-            const chapters= JSON.parse(temp);
-            const bibleId = chapters[0].bibleId;
+    <script>
+        const temp = '<%- JSON.stringify(chapters) %>';
+        const chapters = JSON.parse(temp);
+        const bibleId = chapters[0].bibleId;
 
-            let header = document.getElementsByClassName('header-container')[0];
+        let header = document.getElementsByClassName('header-container')[0];
 
-            //header element
-            const headerForm = document.createElement('form');
-            headerForm.action = `/${bibleId}/search`;
-            headerForm.method = 'GET';
-            headerForm.className = 'header-form';
-            headerForm.onsubmit = 'handleSubmit';
+        //header element
+        const headerForm = document.createElement('form');
+        headerForm.action = `/${bibleId}/search`;
+        headerForm.method = 'GET';
+        headerForm.className = 'header-form';
+        headerForm.onsubmit = 'handleSubmit';
 
-            //input element
-            const headerInput = document.createElement('input');
-            headerInput.type = 'text';
-            headerInput.className = 'header-input';
-            headerInput.placeholder = 'Search...';
-            headerInput.name = 'query';
+        //input element
+        const headerInput = document.createElement('input');
+        headerInput.type = 'text';
+        headerInput.className = 'header-input';
+        headerInput.placeholder = 'Search...';
+        headerInput.name = 'query';
 
-            headerForm.appendChild(headerInput);
-            header.appendChild(headerForm);
+        headerForm.appendChild(headerInput);
+        header.appendChild(headerForm);
 
-        </script>
+    </script>
 </body>
 
 </html>

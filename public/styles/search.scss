@@ -27,9 +27,10 @@
             padding:30px 20px;
             border-radius: 0.2rem;
             background-color: $primaryColor3;
-            // &:hover{
-            //     background-color: $primaryColor4;
-            // }
+            &:hover{
+                background-color: $primaryColor4;
+            }
+            @include fade;
             .search-title{
                 font-size: $fsz3;
                 margin-bottom: 20px;
@@ -49,7 +50,9 @@
                 &:hover{
                     color:white;
                 }
+
                 svg{
+
                     margin-left:10px
                 }
             }
