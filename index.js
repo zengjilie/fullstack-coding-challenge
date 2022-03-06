@@ -30,6 +30,7 @@ app.get("/", async (req, res) => {
                 return true;
             }
         });
+
         //=== VerseOfDay ===
         try {
             let verse = await getVerse();
@@ -38,7 +39,6 @@ app.get("/", async (req, res) => {
 
             res.render("home", { bibles: engBible, verse: verse[0] });
         } catch (err) {
-            console.log(err);
             res.render("home");
         }
     } catch (err) {

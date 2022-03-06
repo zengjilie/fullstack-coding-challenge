@@ -54,7 +54,7 @@
         <div class="home-bible-title"> Select a Bible </div>
 
         <div class="home-bible-versions">
-            <% const temp = JSON.stringify(bibles) %> 
+            <% const temp = JSON.stringify(bibles) %>
             <% const engBible=JSON.parse(temp) %>
             <% engBible.forEach(e=> { %>
 
@@ -62,7 +62,7 @@
             <a class="home-bible-version" href="<%= e.id %>">
                 <div class="home-bible-version-box">
                     <p class="version-abbr">
-                        <%= e.abbreviation%>
+                        <%= e.abbreviationLocal%>
                     </p>
                     <p class="version-name">
                         <%= e.name%>
