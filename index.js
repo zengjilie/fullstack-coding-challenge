@@ -4,8 +4,8 @@ const getVerse = require('./tools/verseGenerator.js');
 const axios = require('axios');
 const { resolveInclude } = require('ejs');
 const app = express();
-const buildStyles = require('./tools/gulpfile.js');
 
+// const buildStyles = require('./tools/gulpfile.js');
 // buildStyles();// comment this line if not in dev environment
 //Set View Engine
 app.set('view engine', 'ejs');
