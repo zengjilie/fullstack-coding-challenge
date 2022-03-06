@@ -14,6 +14,7 @@ app.use(express.static('public'));
 
 //Routes
 app.get('/', async (req, res) => {
+
     const response = await bible.get('')
 
     const { data } = response?.data;
@@ -42,6 +43,7 @@ app.get('/', async (req, res) => {
 
 
 app.get('/:bibleId', async (req, res) => {
+    
     const response = await bible.get(`/${req.params.bibleId}/books?include-chapters=true`);
     const response2 = await bible.get(`/${req.params.bibleId}`);
 
