@@ -32,74 +32,95 @@ app.get('/', async (req, res) => {
         }
     });
     //=== VerseOfDay ===
+    try {
+        let verse = await getVerse();
+        const text = (verse[0].text.replace('</p>', '')); // remove </p> in text string
+        verse[0].text = text;
 
-    let verse = await getVerse();
-    const text = (verse[0].text.replace('</p>', '')); // remove </p> in text string
-    verse[0].text = text;
-
-    res.render('home', { bibles: engBible, verse: verse[0] });
+        res.render('home', { bibles: engBible, verse: verse[0] });
+    } catch (err) {
+        console.log(err);
+        res.render('home');
+    }
 });
 
 
 app.get('/:bibleId', async (req, res) => {
 
-    const response = await bible.get(`/${req.params.bibleId}/books?include-chapters=true`);
-    const response2 = await bible.get(`/${req.params.bibleId}`);
+    try {
 
-    const books = response?.data?.data;//array
-    const version = response2?.data?.data;//string
+        const response = await bible.get(`/${req.params.bibleId}/books?include-chapters=true`);
+        const response2 = await bible.get(`/${req.params.bibleId}`);
 
-    // console.log(books);
+        const books = response?.data?.data;//array
+        const version = response2?.data?.data;//string
 
-    res.render('books', { books, version });
+        // console.log(books);
+
+        res.render('books', { books, version });
+    } catch (err) {
+        console.log(err);
+        res.render('books');
+    }
 })
 
 app.get('/:bibleId/books/:bookId', async (req, res) => {
     const { bibleId, bookId } = req.params;
-    const response = await bible.get(`/${bibleId}/books/${bookId}/chapters`);
-    const response2 = await bible.get(`/${req.params.bibleId}`);
+    try {
 
-    const chapters = response?.data?.data;
-    const bibleVersion = response2?.data?.data.abbreviation;//string
+        const response = await bible.get(`/${bibleId}/books/${bookId}/chapters`);
+        const response2 = await bible.get(`/${req.params.bibleId}`);
 
-    // console.log(chapters);
+        const chapters = response?.data?.data;
+        const bibleVersion = response2?.data?.data.abbreviation;//string
 
-    res.render('chapters', { chapters, version: bibleVersion, bookId });
+        // console.log(chapters);
+
+        res.render('chapters', { chapters, version: bibleVersion, bookId });
+    } catch (err) {
+        console.log(err);
+        res.render('books');
+    }
 })
 
 app.get('/:bibleId/chapters/:chapterId', async (req, res) => {
     const { bibleId, chapterId } = req.params;
-    const response = await bible.get(`/${bibleId}/chapters/${chapterId}?content-type=json`);
-    const response2 = await bible.get(`/${bibleId}/chapters/${chapterId}/verses?content-type=json`);
-    const response3 = await bible.get(`/${req.params.bibleId}`);
+    try {
 
-    const chapterContent = response?.data?.data;
-    const { bookId, number } = chapterContent;
-    const totalVerses = response2?.data?.data;
-    const bibleVersion = response3?.data?.data.abbreviation;
+        const response = await bible.get(`/${bibleId}/chapters/${chapterId}?content-type=json`);
+        const response2 = await bible.get(`/${bibleId}/chapters/${chapterId}/verses?content-type=json`);
+        const response3 = await bible.get(`/${req.params.bibleId}`);
 
-    const paragraphs = [];//verses organized by paragraph
-    const singleVerses = [];//single verses
+        const chapterContent = response?.data?.data;
+        const { bookId, number } = chapterContent;
+        const totalVerses = response2?.data?.data;
+        const bibleVersion = response3?.data?.data.abbreviation;
 
-    //Concatenate verse to paragraph
-    chapterContent.content.forEach(e => {
-        let curPara = '';
-        e.items.forEach(entry => {
-            let curVerse = ''
-            if (entry.type === 'tag') {
-                curPara += entry.items[0].text + ' ';
-            } else if (entry.type === 'text') {
-                curPara += entry.text;
-                curVerse += entry.text;
-                singleVerses.push(curVerse);
-            }
+        const paragraphs = [];//verses organized by paragraph
+        const singleVerses = [];//single verses
+
+        //Concatenate verse to paragraph
+        chapterContent.content.forEach(e => {
+            let curPara = '';
+            e.items.forEach(entry => {
+                let curVerse = ''
+                if (entry.type === 'tag') {
+                    curPara += entry.items[0].text + ' ';
+                } else if (entry.type === 'text') {
+                    curPara += entry.text;
+                    curVerse += entry.text;
+                    singleVerses.push(curVerse);
+                }
+            })
+            paragraphs.push(curPara);
         })
-        paragraphs.push(curPara);
-    })
 
-    // console.log(singleVerses);
-    // res.json(totalVerses);
-    res.render('verses', { paragraphs, totalVerses, version: bibleVersion, bookId, number, singleVerses });
+        // console.log(singleVerses);
+        // res.json(totalVerses);
+        res.render('verses', { paragraphs, totalVerses, version: bibleVersion, bookId, number, singleVerses });
+    }catch(err){
+        res.render('home');
+    }
 })
 
 app.get('/:bibleId/verses/:verseId', async (req, res) => {
@@ -118,7 +139,7 @@ app.get('/:bibleId/search', async (req, res) => {
         const results = response?.data?.data;
         res.render('search', { results, bibleId });
     } catch (err) {
-        res.render('search',{ bibleId });
+        res.render('search', { bibleId });
     }
     // console.log(results);
     // res.json(results);
@@ -128,5 +149,5 @@ app.get('/:bibleId/search', async (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-    console.log('Listening to port',PORT)
+    console.log('Listening to port', PORT)
 });
