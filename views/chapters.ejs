@@ -33,7 +33,7 @@
 
 <body>
     <!-- Header -->
-    <%- include ('components/header.ejs'); %>
+    <%- include ('./components/header.ejs'); %>
 
     <div class="chapters">
 
@@ -66,7 +66,7 @@
     </div>
 
     <!-- Footer -->
-    <%- include ('components/footer.ejs');%>
+    <%- include ('./components/footer.ejs');%>
     <script>
         const temp = '<%- JSON.stringify(chapters) %>';
         const chapters = JSON.parse(temp);

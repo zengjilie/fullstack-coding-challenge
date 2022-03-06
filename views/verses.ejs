@@ -34,7 +34,7 @@
 <body>
 
     <!-- Header -->
-    <%- include ('components/header.ejs');%>
+    <%- include ('./components/header.ejs');%>
 
     <div class="verses">
 
@@ -95,7 +95,7 @@
         </div>
 
         <!-- Footer -->
-        <%- include ('components/footer.ejs');%>
+        <%- include ('./components/footer.ejs');%>
         <script>
             const tv = '<%- JSON.stringify(totalVerses) %>';
             const totalVerses = JSON.parse(tv);//
