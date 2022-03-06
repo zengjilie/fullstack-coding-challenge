@@ -9,15 +9,18 @@ Back End: NodeJS, ExpressJS, EJS
 
 Testing: Jest
 
+API:
+[**Public Bible Api**](https://docs.api.bible/tutorials/verse-of-the-day)
+
 ## Installation
-npm install
+* **Run** `npm install` to install dependencies
 
-npm dev using nodemon
+* **Run** `npm start` to launch to project
+port listening to 5000
 
-npm test
+* **Run** `npm test` to run test
 
-## Reference
-https://docs.api.bible/tutorials/verse-of-the-day
+## References
 https://labs.bible.org/NETBibleTagger
-https://bolls.life/api/#Fetch%20a%20chapter
+
 https://github.com/openbibleinfo/Bible-Passage-Reference-Parser/blob/master/src/ascii/book_names.txt
