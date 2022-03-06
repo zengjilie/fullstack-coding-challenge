@@ -1,10 +1,20 @@
 # OH MY BIBLE
 
+Demo Site: https://ohmybible.herokuapp.com/
+
+## Tech Stack
 Front End: JavaScript, HTML/CSS, SASS
 
 Back End: NodeJS, ExpressJS, EJS
 
 Testing: Jest
+
+## Installation
+npm install
+
+npm dev using nodemon
+
+npm test
 
 ## Reference
 https://docs.api.bible/tutorials/verse-of-the-day
