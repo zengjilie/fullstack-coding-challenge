@@ -133,6 +133,7 @@
 }
 .verses .single-verse .single-verse-box {
   max-width: 900px;
+  padding: 0 20px;
   transform: translateY(30vh);
   margin-left: auto;
   margin-right: auto;

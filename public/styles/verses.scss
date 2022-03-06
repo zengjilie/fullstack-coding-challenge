@@ -66,6 +66,7 @@
 
         .single-verse-box{
             max-width:$globalWidth;
+            padding:0 20px;
             transform:translateY(30vh);
             @include marginCenter;
 
