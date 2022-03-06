@@ -74,7 +74,7 @@ app.get("/:bibleId/books/:bookId", async (req, res) => {
         const response2 = await bible.get(`/${req.params.bibleId}`);
 
         const chapters = response.data.data;
-        const bibleVersion = response2.data.data.abbreviation; //string
+        const bibleVersion = response2.data.data.abbreviationLocal; //string
 
         // console.log(chapters);
 
@@ -99,7 +99,7 @@ app.get("/:bibleId/chapters/:chapterId", async (req, res) => {
         const chapterContent = response.data.data;
         const { bookId, number } = chapterContent;
         const totalVerses = response2.data.data;
-        const bibleVersion = response3.data.data.abbreviation;
+        const bibleVersion = response3.data.data.abbreviationLocal;
 
         const paragraphs = []; //verses organized by paragraph
         const singleVerses = []; //single verses
