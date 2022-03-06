@@ -59,7 +59,7 @@
 
 
             <div class="search-box">
-                <% results.verses.forEach(e=> { %>
+                <% results.verses.slice(start,end).forEach(e=> { %>
                     <div class="search-content">
                         <p class="search-title">
                             <strong>
@@ -79,15 +79,30 @@
                     </div>
                     <% }) %>
             </div>
+
         </div>
 
         <script>
-            const temp = '<%- JSON.stringify(bibleId) %>';
-            const bibleId = JSON.parse(temp);
+            //query results next / pre page
+            const temp = '<%- JSON.stringify(results) %>';
+            const results = JSON.parse(temp).verses;
+            console.log(results);
+
+            const search = document.getElementById('search-box');
+            if(results.length > 10){ // has next page
+
+            }else{ // doesn't have next page
+                results.foreach(e =>{
+                    const singleResult = document.createElement('div');
+                    singleResult.className('search-content');
+                })
+            }
+            //header element
+            const temp2 = '<%- JSON.stringify(bibleId) %>';
+            const bibleId = JSON.parse(temp2);
 
             let header = document.getElementsByClassName('header-container')[0];
 
-            //header element
             const headerForm = document.createElement('form');
             headerForm.action = `/${bibleId}/search`;
             headerForm.method = 'GET';
