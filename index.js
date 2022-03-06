@@ -43,7 +43,7 @@ app.get('/', async (req, res) => {
 
 
 app.get('/:bibleId', async (req, res) => {
-    
+
     const response = await bible.get(`/${req.params.bibleId}/books?include-chapters=true`);
     const response2 = await bible.get(`/${req.params.bibleId}`);
 
@@ -129,5 +129,5 @@ app.get('/:bibleId/search', async (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-    console.log('Listening to port 5000')
+    console.log('Listening to port',PORT)
 });
