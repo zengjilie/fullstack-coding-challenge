@@ -19,6 +19,23 @@ API:
 
 3. **Run** `npm test` to run jest tests
 
+## Features
+
+### Pick a Bible Version
+![image](./home.png)
+
+### Pick a Book
+![image](./book.png)
+
+### Pick a Chapter
+![image](./chapter.png)
+
+### Pick a Verse
+![image](./verse.png)
+
+### Search Relevent Chapters (Pagination)
+![image](./search.png)
+
 ## References
 https://labs.bible.org/NETBibleTagger
 
