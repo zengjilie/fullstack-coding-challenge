@@ -13,12 +13,11 @@ API:
 [**Public Bible Api**](https://docs.api.bible/tutorials/verse-of-the-day)
 
 ## Installation
-* **Run** `npm install` to install dependencies
+1. **Run** `npm install` to install all dependencies
 
-* **Run** `npm start` to launch to project
-port listening to 5000
+2. **Run** `npm start` to launch the project `port listening to 5000`, be sure the port is avaliable
 
-* **Run** `npm test` to run test
+3. **Run** `npm test` to run jest tests
 
 ## References
 https://labs.bible.org/NETBibleTagger
