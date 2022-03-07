@@ -36,9 +36,9 @@ app.get("/", async (req, res) => {
         //=== VerseOfDay ===
         try {
             let verse = await getVerse();
-            const text = verse[0].text.replace("</p>", ""); // remove </p> in text string
+            const regex = /<(“[^”]*”|'[^’]*’|[^'”>])*>/g;
+            const text = verse[0].text.replace(regex, ""); // remove </p> in text string
             verse[0].text = text;
-
             res.render("home", { bibles: engBible, verse: verse[0] });
         } catch (err) {
             res.render("home");
@@ -57,7 +57,8 @@ app.get("/:bibleId", async (req, res) => {
 
         const books = response.data.data; //array
         const version = response2.data.data; //string
-
+        
+        console.log(version);
         // console.log(books);
 
         res.render("books", { books, version });
