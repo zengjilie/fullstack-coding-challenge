@@ -36,6 +36,7 @@ API:
 ### Search Relevent Chapters (Pagination)
 ![image](./search.png)
 
+
 ## References
 https://labs.bible.org/NETBibleTagger
 
