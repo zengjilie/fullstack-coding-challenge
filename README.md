@@ -10,7 +10,7 @@ Back End: NodeJS, ExpressJS, EJS
 Testing: Jest
 
 API:
-[**Public Bible Api**](https://docs.api.bible/tutorials/verse-of-the-day)
+[**Bible Api**](https://docs.api.bible/tutorials/verse-of-the-day)
 
 ## Installation
 1. **Run** `npm install` to install all dependencies
