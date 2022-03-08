@@ -19,7 +19,7 @@ app.get("/", async (req, res) => {
     try {
         const response = await bible.get("");
 
-        const { data } = response.data;
+        const { data } = response?.data;
         //=== [Data from Bible.api is not cleaned !!!] ===
 
         //=== Filtering all English Bibles Remove all the duplicate entry ===
@@ -37,7 +37,7 @@ app.get("/", async (req, res) => {
         try {
             let verse = await getVerse();
             const regex = /<(“[^”]*”|'[^’]*’|[^'”>])*>/g;
-            const text = verse[0].text.replace(regex, ""); // remove </p> in text string
+            const text = verse[0]?.text?.replace(regex, ""); // remove </p> in text string
             verse[0].text = text;
             res.render("home", { bibles: engBible, verse: verse[0] });
         } catch (err) {
@@ -55,8 +55,8 @@ app.get("/:bibleId", async (req, res) => {
         );
         const response2 = await bible.get(`/${req.params.bibleId}`);
 
-        const books = response.data.data; //array
-        const version = response2.data.data; //string
+        const books = response?.data?.data; //array
+        const version = response2?.data?.data; //string
         
         console.log(version);
         // res.json(version);
@@ -77,8 +77,8 @@ app.get("/:bibleId/books/:bookId", async (req, res) => {
         );
         const response2 = await bible.get(`/${req.params.bibleId}`);
 
-        const chapters = response.data.data;
-        const bibleVersion = response2.data.data.abbreviationLocal; //string
+        const chapters = response?.data?.data;
+        const bibleVersion = response2?.data?.data?.abbreviationLocal; //string
 
         // console.log(chapters);
 
@@ -100,10 +100,10 @@ app.get("/:bibleId/chapters/:chapterId", async (req, res) => {
         );
         const response3 = await bible.get(`/${req.params.bibleId}`);
 
-        const chapterContent = response.data.data;
+        const chapterContent = response?.data?.data;
         const { bookId, number } = chapterContent;
-        const totalVerses = response2.data.data;
-        const bibleVersion = response3.data.data.abbreviationLocal;
+        const totalVerses = response2?.data?.data;
+        const bibleVersion = response3?.data?.data?.abbreviationLocal;
 
         const paragraphs = []; //verses organized by paragraph
         const singleVerses = []; //single verses
@@ -141,8 +141,8 @@ app.get("/:bibleId/chapters/:chapterId", async (req, res) => {
 
 app.get("/:bibleId/verses/:verseId", async (req, res) => {
     const { bibleId, verseId } = req.params;
-    const verse = response.data.data;
     const response = await bible.get(`/${bibleId}/verses/${verseId}`);
+    const verse = response?.data?.data;
     res.json(verse);
     // console.log(verse);
 });
@@ -154,7 +154,7 @@ app.get("/:bibleId/search", async (req, res) => {
         const response = await bible.get(
             `/${bibleId}/search?query=${query}&limit=100&sort=relevance`
         );
-        const results = response.data.data;
+        const results = response?.data?.data;
         res.render("search", { results, bibleId });
     } catch (err) {
         res.render("search", { bibleId });
