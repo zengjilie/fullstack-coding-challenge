@@ -59,6 +59,7 @@ app.get("/:bibleId", async (req, res) => {
         const version = response2.data.data; //string
         
         console.log(version);
+        // res.json(version);
         // console.log(books);
 
         res.render("books", { books, version });
