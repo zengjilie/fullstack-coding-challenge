@@ -112,6 +112,7 @@ app.get("/:bibleId/chapters/:chapterId", async (req, res) => {
             let curPara = "";
             let curVerse = "";
 
+            //some paragraphs has no verse, need to data cleaning
             for (let i = 0; i < e.items.length; i++) {
                 const entry = e.items[i];
                 if (entry.type === 'tag') {
