@@ -111,6 +111,7 @@ app.get("/:bibleId/chapters/:chapterId", async (req, res) => {
         chapterContent.content.forEach((e) => {
             let curPara = "";
             let curVerse = "";
+
             for (let i = 0; i < e.items.length; i++) {
                 const entry = e.items[i];
                 if (entry.type === 'tag') {
@@ -132,8 +133,10 @@ app.get("/:bibleId/chapters/:chapterId", async (req, res) => {
             
         });
         
-        singleVerses = singleVerses.filter(e => e !== '');
+        singleVerses = singleVerses.filter(e => e !== ''&& e.charAt(0) >= '0' && e.charAt(0) <= '9');
         
+        // res.json(singleVerses);
+        // res.json(chapterContent) ;
         res.render("verses", {
             paragraphs,
             totalVerses,
