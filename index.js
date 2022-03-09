@@ -41,10 +41,10 @@ app.get("/", async (req, res) => {
             verse[0].text = text;
             res.render("home", { bibles: engBible, verse: verse[0] });
         } catch (err) {
-            res.render("home");
+            res.render("home", { bibles: [], verse: {} });
         }
     } catch (err) {
-        console.log(err);
+
     }
 });
 
@@ -56,16 +56,15 @@ app.get("/:bibleId", async (req, res) => {
         const response2 = await bible.get(`/${req.params.bibleId}`);
 
         const books = response?.data?.data; //array
-        const version = response2?.data?.data; //string
-        
-        console.log(version);
+        const version = response2?.data?.data; //object
+
+        // console.log(version);
         // res.json(version);
         // console.log(books);
 
         res.render("books", { books, version });
     } catch (err) {
-        console.log(err);
-        res.render("books");
+        res.render("home", { bibles: [], verse: {} });
     }
 });
 
@@ -84,8 +83,8 @@ app.get("/:bibleId/books/:bookId", async (req, res) => {
 
         res.render("chapters", { chapters, version: bibleVersion, bookId });
     } catch (err) {
-        console.log(err);
-        res.render("books");
+        // console.log(err);
+        res.render("home", { bibles: [], verse: {} })
     }
 });
 
@@ -111,21 +110,30 @@ app.get("/:bibleId/chapters/:chapterId", async (req, res) => {
         //Concatenate verse to paragraph
         chapterContent.content.forEach((e) => {
             let curPara = "";
+            let curVerse = "";
             e.items.forEach((entry) => {
-                let curVerse = "";
+
                 if (entry.type === "tag") {
+                    if (entry.name === "verse") {
+                        curVerse += entry.items[0].text + " ";
+                    } else if (entry.name === "char") {
+                        curVerse += entry.items[0].text;
+                    }
+
                     curPara += entry.items[0].text + " ";
                 } else if (entry.type === "text") {
                     curPara += entry.text;
                     curVerse += entry.text;
-                    singleVerses.push(curVerse);
+                    if (entry?.attrs?.verseId != null) {
+                        singleVerses.push(curVerse);
+                        curVerse = "";
+                    }
                 }
             });
             paragraphs.push(curPara);
         });
 
         // console.log(singleVerses);
-        // res.json(totalVerses);
         res.render("verses", {
             paragraphs,
             totalVerses,
@@ -135,7 +143,8 @@ app.get("/:bibleId/chapters/:chapterId", async (req, res) => {
             singleVerses,
         });
     } catch (err) {
-        res.render("home");
+        console.log(err);
+        res.render("home", { bibles: [], verse: {} });
     }
 });
 
@@ -157,7 +166,7 @@ app.get("/:bibleId/search", async (req, res) => {
         const results = response?.data?.data;
         res.render("search", { results, bibleId });
     } catch (err) {
-        res.render("search", { bibleId });
+        res.render("home", { bibles: [], verse: {} });
     }
     // console.log(results);
     // res.json(results);
