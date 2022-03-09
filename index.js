@@ -105,35 +105,35 @@ app.get("/:bibleId/chapters/:chapterId", async (req, res) => {
         const bibleVersion = response3?.data?.data?.abbreviationLocal;
 
         const paragraphs = []; //verses organized by paragraph
-        const singleVerses = []; //single verses
+        let singleVerses = []; //single verses
 
         //Concatenate verse to paragraph
         chapterContent.content.forEach((e) => {
             let curPara = "";
             let curVerse = "";
-            e.items.forEach((entry) => {
-
-                if (entry.type === "tag") {
-                    if (entry.name === "verse") {
-                        curVerse += entry.items[0].text + " ";
-                    } else if (entry.name === "char") {
+            for (let i = 0; i < e.items.length; i++) {
+                const entry = e.items[i];
+                if (entry.type === 'tag') {
+                    if (entry.name === 'verse') {
+                        singleVerses.push(curVerse);
+                        curVerse = '';
+                        curVerse += entry.items[0].text + ' ';
+                    } else if (entry.name === 'char') {
                         curVerse += entry.items[0].text;
                     }
-
-                    curPara += entry.items[0].text + " ";
-                } else if (entry.type === "text") {
-                    curPara += entry.text;
+                    curPara += entry.items[0].text + ' ';
+                } else if (entry.type === 'text') {
                     curVerse += entry.text;
-                    if (entry?.attrs?.verseId != null) {
-                        singleVerses.push(curVerse);
-                        curVerse = "";
-                    }
+                    curPara += entry.text;
                 }
-            });
+            }
+            singleVerses.push(curVerse);
             paragraphs.push(curPara);
+            
         });
-
-        // console.log(singleVerses);
+        
+        singleVerses = singleVerses.filter(e => e !== '');
+        
         res.render("verses", {
             paragraphs,
             totalVerses,
