@@ -112,6 +112,7 @@ app.get("/:bibleId/chapters/:chapterId", async (req, res) => {
             let curPara = "";
             let curVerse = "";
 
+
             //some paragraphs has no verse, need to data cleaning
             for (let i = 0; i < e.items.length; i++) {
                 const entry = e.items[i];
@@ -131,11 +132,11 @@ app.get("/:bibleId/chapters/:chapterId", async (req, res) => {
             }
             singleVerses.push(curVerse);
             paragraphs.push(curPara);
-            
+
         });
-        
-        singleVerses = singleVerses.filter(e => e !== ''&& e.charAt(0) >= '0' && e.charAt(0) <= '9');
-        
+
+        singleVerses = singleVerses.filter(e => e !== '' && e.charAt(0) >= '0' && e.charAt(0) <= '9');
+
         // res.json(singleVerses);
         // res.json(chapterContent) ;
         res.render("verses", {
