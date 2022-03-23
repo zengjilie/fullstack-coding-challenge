@@ -33,7 +33,7 @@ API:
 ### Pick a Verse
 ![image](./verse.png)
 
-### Search Relevent Chapters (Pagination)
+### Search Relevant Chapters (Pagination)
 ![image](./search.png)
 
 ## References
