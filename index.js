@@ -41,7 +41,7 @@ app.get("/", async (req, res) => {
         try {
             let verse = await getVerse();
             const regex = /<(“[^”]*”|'[^’]*’|[^'”>])*>/g;
-            const text = verse[0]?.text?.replace(regex, ""); // remove </p> in text string
+            const text = verse[0].text.replace(regex, ""); // remove </p> in text string
             verse[0].text = text;
             res.render("home", { bibles: engBible, verse: verse[0] });
         } catch (err) {
