@@ -20,6 +20,8 @@ app.get("/", async (req, res) => {
         const response = await bible.get("");
 
         const { data } = response?.data;
+        console.log('test');//new
+
         //=== [Data from Bible.api is not cleaned !!!] ===
 
         //=== Filtering all English Bibles Remove all the duplicate entry ===
