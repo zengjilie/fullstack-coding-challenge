@@ -61,7 +61,6 @@ app.get("/:bibleId", async (req, res) => {
         // console.log(version);
         // res.json(version);
         // console.log(books);
-
         res.render("books", { books, version });
     } catch (err) {
         res.render("home", { bibles: [], verse: {} });
