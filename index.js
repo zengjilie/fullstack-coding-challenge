@@ -4,6 +4,7 @@ const getVerse = require("./tools/verseGenerator.js");
 const axios = require("axios");
 const { resolveInclude } = require("ejs");
 const app = express();
+require('dotenv').config();
 
 // const buildStyles = require('./tools/gulpfile.js');
 // buildStyles();// comment this line if not in dev environment
@@ -20,7 +21,8 @@ app.get("/", async (req, res) => {
         const response = await bible.get("");
 
         const { data } = response?.data;
-        console.log('test');//new
+
+        console.log(process.env.API_KEY);//new
 
         //=== [Data from Bible.api is not cleaned !!!] ===
 
