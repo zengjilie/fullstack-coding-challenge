@@ -22,7 +22,7 @@ app.get("/", async (req, res) => {
 
         const { data } = response?.data;
 
-        console.log(process.env.API_KEY);//new
+        console.log(data);//new
 
         //=== [Data from Bible.api is not cleaned !!!] ===
 
