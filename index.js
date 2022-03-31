@@ -47,10 +47,10 @@ app.get("/", async (req, res) => {
             res.render("home", { bibles: engBible, verse: verse[0] });
         } catch (err) {
             res.render("home", { bibles: [], verse: {} });
-            console.log('error', err);
+            console.log('error verse', err);
         }
     } catch (err) {
-        console.log('error',err);
+        console.log('error bible',err);
     }
 });
 
