@@ -41,6 +41,7 @@ app.get("/", async (req, res) => {
 
         try {
             let verse = await getVerse();
+            console.log('verse',verse);
             const regex = /<(“[^”]*”|'[^’]*’|[^'”>])*>/g;
             const text = verse[0].text.replace(regex, ""); // remove </p> in text string
             verse[0].text = text;

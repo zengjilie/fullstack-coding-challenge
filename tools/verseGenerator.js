@@ -35,6 +35,7 @@ const getVerse = async () => {
         'Proverbs 29:25',
         'Isaiah 66:13',
         'Proverbs 31:2',
+        '1 Peter 5:7'
     ];
     //Use Today's date 
     const random = new Date().getDate() - 1;
