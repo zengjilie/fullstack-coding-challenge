@@ -22,8 +22,6 @@ app.get("/", async (req, res) => {
 
         const { data } = response?.data;
 
-        console.log(data);//new
-
         //=== [Data from Bible.api is not cleaned !!!] ===
 
         //=== Filtering all English Bibles Remove all the duplicate entry ===
@@ -37,7 +35,10 @@ app.get("/", async (req, res) => {
             }
         });
 
+        // console.log(engBible);
+
         //=== VerseOfDay ===
+
         try {
             let verse = await getVerse();
             const regex = /<(“[^”]*”|'[^’]*’|[^'”>])*>/g;
@@ -46,9 +47,10 @@ app.get("/", async (req, res) => {
             res.render("home", { bibles: engBible, verse: verse[0] });
         } catch (err) {
             res.render("home", { bibles: [], verse: {} });
+            console.log('error', err);
         }
     } catch (err) {
-
+        console.log('error',err);
     }
 });
 
