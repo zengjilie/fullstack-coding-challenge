@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "engines": {
-    "node":"16.x"
+    "node": "16.x"
   },
   "scripts": {
     "test": "jest",
@@ -28,7 +28,7 @@
   },
   "description": "",
   "devDependencies": {
-    "gulp": "^4.0.2",
+    "gulp": "^3.9.1",
     "gulp-sass": "^5.1.0",
     "jest": "^27.5.1",
     "sass": "^1.49.9",
